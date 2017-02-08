@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport">
+<link rel="shortcut icon" href="../../../../../../../../../Desktop/index/favicon.ico">
+<title>Hostel World</title>
+
+<link href="/HostelWorld/static/css/reset.css" rel="stylesheet">
+<link href="/HostelWorld/static/css/css.css" rel="stylesheet">
+<link href="/HostelWorld/static/css/responsive.css" rel="stylesheet">
+<link href="/HostelWorld/static/fonts/fonts.css" rel="stylesheet">
+    <script src="/HostelWorld/static/js/jquery-1.11.2.min.js"></script>
+<script src="/HostelWorld/static/js/jquery.easing.js"></script>
+<script src="/HostelWorld/static/js/jquery.flexslider-min.js"></script>
+<script src="/HostelWorld/static/js/jquery.mousewheel.js"></script>
+
+</head>
+<body class="gradientManchas">
+<div id="loading">
+	<img src="/HostelWorld/static/images/loading.png" id="load">
+	<div id="latido" class="loadingGlow"></div>
+    <div id="circle"></div>
+</div>
+<header class="headSalmon">
+  <div class="logo">
+  	<a href="#">
+    <img src="/HostelWorld/static/images/logo-salmon.png" class="salmon"/>
+  	<img src="/HostelWorld/static/images/logo-azul.png" class="blue"/>
+    </a>
+  </div>
+</header>
+<section id="proyectos" class="gradientManchas in">
+    <div class="wpCont layer" data-depth="0.0">
+        <div class="welcome">
+            <hr class="fat">
+            <p>
+                <strong>Hostel World</strong>
+            </p>
+            <hr>
+        </div>  
+        <div class="wpProy">
+        	<a href="proyecto-omega.html" class="proy omega">
+            	<div class="copy">
+                    <p><strong>游客入口</strong>
+                        <br>我想先看看</p>
+                    <div class="arrowIr"></div>
+                </div>
+                <img src="/HostelWorld/static/images/proy-agencia.png" class="imgProy">
+            </a>
+            
+        	<a href="/HostelWorld/home" class="proy sivori">
+            	<div class="copy">
+                    <p><strong>会员入口</strong>
+                        <br>我是Hostel World会员</p>
+                    <div class="arrowIr"></div>
+                </div>
+                <img src="/HostelWorld/static/images/proy-proyectos.png" class="imgProy">
+            </a>
+            
+        	<a href="proyecto-liderar.html" class="proy liderar">
+            	<div class="copy">
+                    <p><strong>客栈入口</strong>
+                        <br>我是加盟客栈</p>
+                    <div class="arrowIr"></div>
+                </div>
+                <img src="/HostelWorld/static/images/proy-contacto.png" class="imgProy">
+            </a>
+            
+        	<a href="proyecto-foodpro.html" class="proy foodpro">
+            	<div class="copy">
+                    <p><strong>经理入口</strong></p>
+                    <div class="arrowIr"></div>
+                </div>
+                <img src="/HostelWorld/static/images/proy-manifiesto.png" class="imgProy">
+            </a>
+            
+        	<a href="proyecto-mole.html" class="proy mole">
+            	<div class="copy">
+                    <p><strong>联系我们</strong></p>
+                    <div class="arrowIr"></div>
+                </div>
+                <img src="/HostelWorld/static/images/proy-estudio.png" class="imgProy">
+            </a>
+        </div class="wpProy">
+    </div>
+    <div class="splash layer" data-depth="0.10"><img src="/HostelWorld/static/images/splash-manifiesto.png"></div>
+</section>
+
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+$(document).ready(function(e) {
+    var scene3 = document.getElementById('proyectos');
+	var parallax = new Parallax(scene3);
+});
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>
+</body>
+</html>

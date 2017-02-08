@@ -1,0 +1,92 @@
+
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.container {
+  width: 85%;
+}
+.fromcontainer
+{
+  padding-left: 2%;
+  padding-top: 5%;
+  width: 85%;
+}
+.fromcard
+{
+  display: flex;
+}
+.toptext
+{
+  padding-left: 10%;
+  padding-right: 30%;
+}
+.positionfrom
+{
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #dce0e0;
+}
+.timefrom
+{
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #dce0e0;
+}
+.buttonfrom
+{
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #dce0e0;
+}
+.header-container
+{
+  width: 100%;
+}
+
+.button-collapse {
+  color: #E57373;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}

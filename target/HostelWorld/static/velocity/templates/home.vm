@@ -1,0 +1,46 @@
+#set($layout="layout.vm")
+<div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+        <section id="top">
+            <div class="layer container">
+                <br><br>
+                <div class="toptext">
+                    <h1 class="black-text text-lighten-2"><span class="materialize-red-text text-lighten-2">Hostel World</span>为您的旅行寻找最美妙的客栈体验。</h1>
+                </div>
+
+                <br><br>
+            </div>
+            <div class="splash layer" data-depth="0.10"><img style="padding-left: 20%" src="/HostelWorld/static/images/splash-top.png"></div>
+        </section>
+    </div>
+
+    <div class="row center fromcontainer">
+            <div class="card-panel fromcard">
+            <div class="card-content positionfrom col s12 m4" style="padding: 10px">
+                <p class="black-text ">地点</p>
+            </div>
+            <div class="card-content timefrom col s12 m4" style="padding: 10px">
+                <p class="black-text ">入住时间</p>
+            </div>
+            <div class="card-content buttonfrom col s12 m4" style="padding: 10px">
+                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">寻找客栈</a>
+            </div>
+            </div>
+
+    </div>
+</div>
+</div>
+
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>
+
+
+
+
+
