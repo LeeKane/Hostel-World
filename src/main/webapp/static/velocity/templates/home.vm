@@ -1,5 +1,4 @@
-#set($layout="layout.vm")
-<div id="index-banner" class="parallax-container">
+<div>
     <div class="section no-pad-bot">
         <section id="top">
             <div class="layer container">

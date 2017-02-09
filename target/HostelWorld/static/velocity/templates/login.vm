@@ -1,0 +1,92 @@
+#set($layout="noLayout.vm")
+<header>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper header-container">
+            <a id="logo-container" href="#" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+        </div>
+    </nav>
+</header>
+<div>
+    <div class="section no-pad-bot">
+        <section id="top">
+            <div class="layer container">
+                <div class="row center">
+
+                <h3 class="materialize-red-text text-lighten-2">HostelWorld</h3>
+                为您的旅行寻找最美妙的客栈体验
+                    </div>
+            </div>
+            <div class="splash layer" data-depth="0.10"><img style="padding-left: 20%" src="/HostelWorld/static/images/splash-login.png"></div>
+        </section>
+    </div>
+</div>
+
+<div ng-app="loginApp" ng-controller="loginController">
+<div class="row">
+    <div class="col s12 m4 offset-m4">
+    <!-- When a link in the menu is clicked, we set the active variable -->
+    <ul class="tabs">
+    <li class="tab col s6 m2"><a ng-click="active='signin'">登陆</a></li>
+    <li class="tab col s6 m2"><a ng-click="active='signup'">注册</a></li>
+    </ul>
+        </div>
+</div>
+
+<div ng-show="active=='signin'"  class="row">
+    <div class="col s12 m4 offset-m4 ">
+        <div class="card">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+
+                                <input id="userid" type="text" class="validate">
+                                <label for="userid">会员号</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+
+                                <input id="password" type="password" class="validate" >
+                                <label for="password">密码</label>
+                            </div>
+                        </div>
+                        <button  class="waves-effect waves-light btn" type="submit" id="login" style="margin-left: 36%;margin-bottom: 15px;">
+                            登陆</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+<div ng-show="active=='signup'"  class="row">
+    <div class="col s12 m4 offset-m4 ">
+        <div class="card">
+            <div class="row">
+                <form class="col s12">
+                    <p class="black-text center">为您的会员卡设置一个密码</p>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate" >
+                            <label for="password">密码</label>
+                        </div>
+                    </div>
+                    <button  class="waves-effect waves-light btn" type="submit" id="login" style="margin-left: 36%;margin-bottom: 15px;">
+                        注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="/HostelWorld/static/js/angular.js"></script>
+<script src="/HostelWorld/static/js/login.js"></script>
+<script src="/HostelWorld/static/js/materialize.js"></script>
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>

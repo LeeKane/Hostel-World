@@ -39,6 +39,6 @@ public class UsersController {
     @RequestMapping(value = "/home")
     public String picture() {
 
-        return "home";
+        return "login";
     }
 }

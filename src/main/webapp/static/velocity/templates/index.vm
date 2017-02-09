@@ -25,8 +25,7 @@
 <header class="headSalmon">
   <div class="logo">
   	<a href="#">
-    <img src="/HostelWorld/static/images/logo-salmon.png" class="salmon"/>
-  	<img src="/HostelWorld/static/images/logo-azul.png" class="blue"/>
+    <img src="/HostelWorld/static/images/hwlogo.png" class="salmon"/>
     </a>
   </div>
 </header>
