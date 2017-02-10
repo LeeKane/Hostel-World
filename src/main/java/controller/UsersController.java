@@ -43,9 +43,11 @@ public class UsersController {
 
     }
     @RequestMapping(value = "/home")
-    public String home() {
-
-        return "home";
+    public ModelAndView home(HttpServletRequest request,
+                             HttpServletResponse response)throws Exception {
+        int cardId=(int)request.getSession().getAttribute("cardId");
+        user user=userService.getUser(cardId);
+        return new ModelAndView("home", "user", user);
 
     }
     @RequestMapping(value = "/login")
@@ -55,7 +57,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/login.do")
-    public ModelAndView home(user user,HttpServletRequest request,
+    public ModelAndView login(user user,HttpServletRequest request,
                              HttpServletResponse response)throws Exception {
         String result="";
         user user1=userService.getUser(user.getCardId());
@@ -70,5 +72,13 @@ public class UsersController {
             result="会员号或密码不正确";
             return new ModelAndView("login", "result", result);
         }
+    }
+
+    @RequestMapping(value = "/singup.do")
+    public ModelAndView signup(String username,String password,HttpServletRequest request,
+                              HttpServletResponse response)throws Exception {
+        System.out.println(username);
+        System.out.println(password);
+        return null;
     }
 }

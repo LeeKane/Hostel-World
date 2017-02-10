@@ -1,9 +1,9 @@
 <header>
 <nav class="white" role="navigation">
     <div class="nav-wrapper header-container">
-        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <a id="logo-container" href="#" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
         <ul class="right hide-on-med-and-down" id="user">
-            <li><a id="uname" class="waves-effect waves-red"><i class="material-icons left">perm_identity</i></a></li>
+            <li><a id="uname" class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">perm_identity</i><label class="materialize-red-text text-lighten-2">$!user.username</label></a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
             <li><a href="#">会员卡</a></li>

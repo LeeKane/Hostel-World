@@ -18,6 +18,11 @@ p {
   padding-top: 5%;
   width: 85%;
 }
+button .disabled
+{
+  background-color: #DFDFDF !important;
+  color: #9F9F9F !important;
+}
 .fromcard
 {
   display: flex;
