@@ -23,6 +23,11 @@ button .disabled
   background-color: #DFDFDF !important;
   color: #9F9F9F !important;
 }
+.btn.disabled
+{
+  background-color: #DFDFDF !important;
+  color: #9F9F9F !important;
+}
 .fromcard
 {
   display: flex;

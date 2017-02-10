@@ -78,7 +78,7 @@
                             <span class="materialize-red-text text-lighten-2" ng-show="loginForm.password.$error.required || loginForm.password.$invalid"">密码由5-10位的合法字符组成。</span>
                         </div>
                     </div>
-                    <button  class="waves-effect waves-light btn" type="submit" id="signup" ng-disabled="loginForm.username.$dirty && loginForm.username.$invalid ||
+                    <button  class="waves-effect waves-light btn" type="submit" id="signup" ng-hide="loginForm.username.$dirty && loginForm.username.$invalid ||
   loginForm.password.$dirty && loginForm.password.$invalid" style="margin-left: 36%;margin-bottom: 15px;">
                         注册</button>
                 </form>
