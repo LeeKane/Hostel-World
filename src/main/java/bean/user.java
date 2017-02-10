@@ -4,26 +4,25 @@ package bean;
  * Created by mac on 16/7/16.
  */
 public class user {
-    private String userId;
-    private String userName;
+    private int id;
+    private String username;
     private String password;
-    private char sex;
-    private String email;
+    private int cardId;
 
-    public String getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -34,19 +33,11 @@ public class user {
         this.password = password;
     }
 
-    public char getSex() {
-        return sex;
+    public int getCardId() {
+        return cardId;
     }
 
-    public void setSex(char sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
     }
 }

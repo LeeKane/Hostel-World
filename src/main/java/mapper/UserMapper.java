@@ -11,6 +11,6 @@ import java.util.List;
  * Created by mac on 16/7/18.
  */
 public interface UserMapper {
-    @Select("SELECT * FROM user WHERE userId = #{userId}")
+    @Select("SELECT * FROM user WHERE id = #{userId}")
     user getUser(@Param("userId")String userId);
 }

@@ -38,7 +38,7 @@ public class UsersController {
     }
     @RequestMapping(value = "/home")
     public String picture() {
-
+        System.out.println(userService.getUser("1").getUsername());
         return "login";
     }
 }
