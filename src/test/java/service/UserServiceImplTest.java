@@ -19,7 +19,7 @@ import bean.user;
 
         @Test
         public void getUserTest(){
-            user user = userService.getUser("1");
+            user user = userService.getUser(1);
             Assert.assertNotNull(user);
         }
     }

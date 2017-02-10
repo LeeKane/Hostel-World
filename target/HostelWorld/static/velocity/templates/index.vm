@@ -48,7 +48,7 @@
                 <img src="/HostelWorld/static/images/proy-agencia.png" class="imgProy">
             </a>
             
-        	<a href="/HostelWorld/home" class="proy sivori">
+        	<a href="/HostelWorld/login" class="proy sivori">
             	<div class="copy">
                     <p><strong>会员入口</strong>
                         <br>我是Hostel World会员</p>

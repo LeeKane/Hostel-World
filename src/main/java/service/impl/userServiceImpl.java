@@ -22,8 +22,11 @@ public class userServiceImpl implements userService {
     }
 
     @Override
-    public user getUser(String userId) {
-        return this.userMapper.getUser(userId);
+    public user getUser(int cardId) {
+        user user=this.userMapper.getUser(cardId);
+        if(user==null)
+            return null;
+        return user;
     }
 
 
