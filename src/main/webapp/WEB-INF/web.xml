@@ -23,6 +23,14 @@
         <servlet-name>HostelWorld</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>default</servlet-name>
+         <url-pattern>*.js</url-pattern>
+         <url-pattern>*.css</url-pattern>
+         <url-pattern>/font/*"</url-pattern>
+         <url-pattern>/fonts/*"</url-pattern>
+         <url-pattern>/images/*</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>

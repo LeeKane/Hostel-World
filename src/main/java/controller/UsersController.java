@@ -42,13 +42,19 @@ public class UsersController {
         return "index";
 
     }
+    @RequestMapping(value = "/home")
+    public String home() {
+
+        return "home";
+
+    }
     @RequestMapping(value = "/login")
     public ModelAndView picture() {
         String result="";
         return new ModelAndView("login", "resut", result);
     }
 
-    @RequestMapping(value = "/home")
+    @RequestMapping(value = "/login.do")
     public ModelAndView home(user user,HttpServletRequest request,
                              HttpServletResponse response)throws Exception {
         String result="";
@@ -57,7 +63,8 @@ public class UsersController {
         {
             HttpSession session=request.getSession();
             session.setAttribute("cardId",user.getCardId());
-            return new ModelAndView("home","resut",result);
+            response.sendRedirect("/HostelWorld/home");
+            return null;
         }
         else {
             result="会员号或密码不正确";
