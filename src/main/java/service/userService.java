@@ -10,5 +10,7 @@ import java.util.List;
 public interface userService {
     public List<user> getAlluser();
     public user getUser(int cardId);
+    public user getUserByName(String username);
+    public void inserUser(String password ,String username);
 }
 

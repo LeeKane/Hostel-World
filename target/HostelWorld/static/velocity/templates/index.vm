@@ -14,7 +14,6 @@
 <script src="/HostelWorld/static/js/jquery.easing.js"></script>
 <script src="/HostelWorld/static/js/jquery.flexslider-min.js"></script>
 <script src="/HostelWorld/static/js/jquery.mousewheel.js"></script>
-
 </head>
 <body class="gradientManchas">
 <div id="loading">
@@ -85,6 +84,7 @@
     </div>
     <div class="splash layer" data-depth="0.10"><img src="/HostelWorld/static/images/splash-manifiesto.png"></div>
 </section>
+
 
 <script src="/HostelWorld/static/js/parallax.js"></script>
 <script>

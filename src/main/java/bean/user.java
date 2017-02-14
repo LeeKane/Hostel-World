@@ -4,20 +4,12 @@ package bean;
  * Created by mac on 16/7/16.
  */
 public class user {
-    private int cardId;
+
     private String password;
-    private int id;
     private String username;
+    private int cardId;
 
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

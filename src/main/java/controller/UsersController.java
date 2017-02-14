@@ -4,9 +4,9 @@ package controller;
  * Created by mac on 16/7/16.
  */
 import bean.user;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,14 +56,19 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/login.do")
-    public ModelAndView login(user user,HttpServletRequest request,
+    public ModelAndView login(String cardId,String password,HttpServletRequest request,
                              HttpServletResponse response)throws Exception {
         String result="";
-        user user1=userService.getUser(user.getCardId());
-        if(user1!=null&&user1.getPassword().equals(user.getPassword()))
+        if(!(StringUtils.isNumeric(cardId)))
+        {
+            result="会员号或密码不正确";
+            return new ModelAndView("login", "result", result);
+        }
+        user user1=userService.getUser(Integer.parseInt(cardId));
+        if(user1!=null&&user1.getPassword().equals(password))
         {
             HttpSession session=request.getSession();
-            session.setAttribute("cardId",user.getCardId());
+            session.setAttribute("cardId",Integer.parseInt(cardId));
             response.sendRedirect("/HostelWorld/home");
             return null;
         }
@@ -74,11 +78,11 @@ public class UsersController {
         }
     }
 
-    @RequestMapping(value = "/singup.do")
-    public ModelAndView signup(String username,String password,HttpServletRequest request,
-                              HttpServletResponse response)throws Exception {
-        System.out.println(username);
-        System.out.println(password);
-        return null;
+    @RequestMapping(value = "/signup.do",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+    public ModelAndView signup(@RequestBody user user) {
+        System.out.println(user.getUsername());
+        userService.inserUser(user.getPassword(),user.getUsername());
+        user usernew=userService.getUserByName(user.getUsername());
+        return new ModelAndView("login", "signupResult", usernew.getCardId());
     }
 }

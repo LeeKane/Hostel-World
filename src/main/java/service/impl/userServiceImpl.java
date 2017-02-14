@@ -6,6 +6,7 @@ import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.userService;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -29,5 +30,23 @@ public class userServiceImpl implements userService {
         return user;
     }
 
+    @Override
+    public user getUserByName(String username) {
+        user user=this.userMapper.getUserByName(username);
+        if(user==null)
+            return null;
+        return user;
+    }
+
+    @Override
+    public void inserUser(String password, String username) {
+        Calendar calendar = Calendar.getInstance();
+        java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+        calendar.setTime(startDate);
+        calendar.add(Calendar.YEAR, 1);
+        java.sql.Date stopDate  = new java.sql.Date(calendar.getTime().getTime());
+        userMapper.insertUser(password,username);
+        userMapper.insertCard(stopDate);
+    }
 
 }

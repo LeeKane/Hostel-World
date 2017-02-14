@@ -1,4 +1,5 @@
 #set($layout="noLayout.vm")
+<script src="/HostelWorld/static/js/angular.js"></script>
 <header>
     <nav class="white" role="navigation">
         <div class="nav-wrapper header-container">
@@ -63,33 +64,43 @@
     <div class="col s12 m4 offset-m4 ">
         <div class="card">
             <div class="row">
-                <form action="singup.do" method="post" class="col s12" name="loginForm" novalidate="novalidate">
+                <form class="col s12" name="signupForm">
                     <p class="black-text center">为您的会员卡设置一个用户名和密码</p>
 
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="username" type="text" class="validate" ng-model="username" name="username"ng-minlength="3" ng-maxlength="10" required>
                             <label for="username">用户名</label>
-                             <span class="materialize-red-text text-lighten-2" ng-show="loginForm.username.$error.required || loginForm.username.$invalid"">用户名由3-10位的合法字符组成。</span>
+                             <span class="materialize-red-text text-lighten-2" ng-show="signupForm.username.$error.required || signupForm.username.$invalid">用户名由3-10位的合法字符组成。</span>
                         </div>
                         <div class="input-field col s12">
                             <input id="password" type="password" class="validate" ng-model="password" name="password" ng-minlength="5" ng-maxlength="10" required>
                             <label for="password">密码</label>
-                            <span class="materialize-red-text text-lighten-2" ng-show="loginForm.password.$error.required || loginForm.password.$invalid"">密码由5-10位的合法字符组成。</span>
+                            <span class="materialize-red-text text-lighten-2" ng-show="signupForm.password.$error.required || signupForm.password.$invalid">密码由5-10位的合法字符组成。</span>
                         </div>
                     </div>
-                    <button  class="waves-effect waves-light btn" type="submit" id="signup" ng-hide="loginForm.username.$dirty && loginForm.username.$invalid ||
-  loginForm.password.$dirty && loginForm.password.$invalid" style="margin-left: 36%;margin-bottom: 15px;">
+                    <button  class="waves-effect waves-light btn"  ng-click="signup()" id="signup" ng-if="signupForm.username.$valid && signupForm.password.$valid" style="margin-left: 36%;margin-bottom: 15px;">
                         注册</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<div ng-show="active=='signupSuccess'"  class="row">
+        <div class="col s12 m4 offset-m4 ">
+            <div class="card">
+                <div class="row">
+                    <label class="row " style="margin-left: 34%">$!signupResult</label>
+                        <button  class="waves-effect waves-light btn"  ng-click="signup()" id="signup" ng-if="signupForm.username.$valid && signupForm.password.$valid" style="margin-left: 36%;margin-bottom: 15px;">
+                            注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script src="/HostelWorld/static/js/angular.js"></script>
-<script src="/HostelWorld/static/js/login.js"></script>
+
+<script src="/HostelWorld/static/js/signup.js"></script>
 <script src="/HostelWorld/static/js/materialize.js"></script>
 <script src="/HostelWorld/static/js/parallax.js"></script>
 <script>
