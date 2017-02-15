@@ -1,0 +1,49 @@
+#set($layout="noLayout.vm")
+<script src="/HostelWorld/static/js/angular.js"></script>
+<header>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper header-container">
+            <a id="logo-container" href="#" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+        </div>
+    </nav>
+</header>
+<div>
+    <div class="section no-pad-bot">
+        <section id="top">
+            <div class="layer container">
+                <div class="row center">
+
+                    <h3 class="materialize-red-text text-lighten-2">HostelWorld</h3>
+                    为您的旅行寻找最美妙的客栈体验
+                </div>
+            </div>
+            <div class="splash layer" data-depth="0.10"><img style="padding-left: 20%" src="/HostelWorld/static/images/splash-login.png"></div>
+        </section>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+        <div class="col s12 m4 offset-m4 ">
+            <div class="card">
+                <div class="row center">
+                    注册成功,您的会员号是
+                    <label class="row " style="margin-left: 34%">$!signupResult</label>
+                    使用这个会员号登陆
+                    <button  class="waves-effect waves-light btn"  ng-click="signup()" id="signup" style="margin-left: 36%;margin-bottom: 15px;">
+                        登陆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/HostelWorld/static/js/materialize.js"></script>
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>

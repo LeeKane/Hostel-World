@@ -3,6 +3,7 @@ package controller;
 /**
  * Created by mac on 16/7/16.
  */
+import bean.SignUp;
 import bean.user;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -61,28 +64,63 @@ public class UsersController {
         String result="";
         if(!(StringUtils.isNumeric(cardId)))
         {
+            System.out.print("s");
             result="会员号或密码不正确";
             return new ModelAndView("login", "result", result);
         }
+
         user user1=userService.getUser(Integer.parseInt(cardId));
         if(user1!=null&&user1.getPassword().equals(password))
         {
+            System.out.print("ss");
             HttpSession session=request.getSession();
             session.setAttribute("cardId",Integer.parseInt(cardId));
             response.sendRedirect("/HostelWorld/home");
             return null;
         }
         else {
+            System.out.print("sss");
             result="会员号或密码不正确";
             return new ModelAndView("login", "result", result);
         }
     }
 
-    @RequestMapping(value = "/signup.do",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
-    public ModelAndView signup(@RequestBody user user) {
-        System.out.println(user.getUsername());
+    @RequestMapping(value = "/signin.do")
+    public ModelAndView signin(@RequestBody SignUp signUp, HttpServletRequest request,
+                               HttpServletResponse response)throws Exception {
+        String result="";
+        if(!(StringUtils.isNumeric(signUp.getCardId())))
+        {
+            System.out.print("s");
+            result="会员号或密码不正确";
+            return new ModelAndView("login", "result", result);
+        }
+
+        user user1=userService.getUser(Integer.parseInt(signUp.getCardId()));
+        if(user1!=null&&user1.getPassword().equals(signUp.getPassword()))
+        {
+            System.out.print("ss");
+            HttpSession session=request.getSession();
+            session.setAttribute("cardId",Integer.parseInt(signUp.getCardId()));
+            response.sendRedirect("/HostelWorld/home");
+            return null;
+        }
+        else {
+            System.out.print("sss");
+            result="会员号或密码不正确";
+            return new ModelAndView("login", "result", result);
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/signup.do")
+    public Map signup(@RequestBody user user) {
+        Map<String, Object> result = new HashMap<String, Object>();
         userService.inserUser(user.getPassword(),user.getUsername());
         user usernew=userService.getUserByName(user.getUsername());
-        return new ModelAndView("login", "signupResult", usernew.getCardId());
+        result.put("username",usernew.getUsername());
+        result.put("cardId",usernew.getCardId()+"");
+        result.put("password",usernew.getPassword());
+        return result;
     }
 }

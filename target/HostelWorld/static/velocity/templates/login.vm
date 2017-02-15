@@ -79,6 +79,7 @@
                             <span class="materialize-red-text text-lighten-2" ng-show="signupForm.password.$error.required || signupForm.password.$invalid">密码由5-10位的合法字符组成。</span>
                         </div>
                     </div>
+                    <label class="row " style="margin-left: 34%">{{signupError}}</label>
                     <button  class="waves-effect waves-light btn"  ng-click="signup()" id="signup" ng-if="signupForm.username.$valid && signupForm.password.$valid" style="margin-left: 36%;margin-bottom: 15px;">
                         注册</button>
                 </form>
@@ -86,19 +87,22 @@
         </div>
     </div>
 </div>
-<div ng-show="active=='signupSuccess'"  class="row">
+    <div ng-show="active=='signupSuccess'"  class="row">
         <div class="col s12 m4 offset-m4 ">
             <div class="card">
-                <div class="row">
-                    <label class="row " style="margin-left: 34%">$!signupResult</label>
-                        <button  class="waves-effect waves-light btn"  ng-click="signup()" id="signup" ng-if="signupForm.username.$valid && signupForm.password.$valid" style="margin-left: 36%;margin-bottom: 15px;">
-                            注册</button>
+                <div class="row center" style="
+    padding-top: 12px;">
+                    注册成功!您的会员号为
+                    <h3 class="materialize-red-text text-lighten-2">{{new.cardId}}</h3>
+                    使用该账号登陆
+                </div>
+                        <button  class="waves-effect waves-light btn"  ng-click="signin()" id="signin"  style="margin-left: 39%;margin-bottom: 15px;">
+                            登陆</button>
+
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 
 <script src="/HostelWorld/static/js/signup.js"></script>
 <script src="/HostelWorld/static/js/materialize.js"></script>
