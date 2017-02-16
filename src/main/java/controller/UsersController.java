@@ -62,9 +62,9 @@ public class UsersController {
     public ModelAndView login(String cardId,String password,HttpServletRequest request,
                              HttpServletResponse response)throws Exception {
         String result="";
-        if(!(StringUtils.isNumeric(cardId)))
+        if(!(StringUtils.isNumeric(cardId))||cardId=="")
         {
-            System.out.print("s");
+
             result="会员号或密码不正确";
             return new ModelAndView("login", "result", result);
         }
@@ -72,14 +72,14 @@ public class UsersController {
         user user1=userService.getUser(Integer.parseInt(cardId));
         if(user1!=null&&user1.getPassword().equals(password))
         {
-            System.out.print("ss");
+
             HttpSession session=request.getSession();
             session.setAttribute("cardId",Integer.parseInt(cardId));
             response.sendRedirect("/HostelWorld/home");
             return null;
         }
         else {
-            System.out.print("sss");
+
             result="会员号或密码不正确";
             return new ModelAndView("login", "result", result);
         }

@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="input-field col s12">
 
-                                <input id="userid" type="text" class="validate" ng-model="cardId" name="cardId" >
+                                <input id="userid" type="text" class="validate" ng-model="cardId" placeholder="{{cardId}}" name="cardId" >
                                 <label for="userid">会员号</label>
                             </div>
                         </div>
