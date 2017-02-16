@@ -85,32 +85,7 @@ public class UsersController {
         }
     }
 
-    @RequestMapping(value = "/signin.do")
-    public ModelAndView signin(@RequestBody SignUp signUp, HttpServletRequest request,
-                               HttpServletResponse response)throws Exception {
-        String result="";
-        if(!(StringUtils.isNumeric(signUp.getCardId())))
-        {
-            System.out.print("s");
-            result="会员号或密码不正确";
-            return new ModelAndView("login", "result", result);
-        }
 
-        user user1=userService.getUser(Integer.parseInt(signUp.getCardId()));
-        if(user1!=null&&user1.getPassword().equals(signUp.getPassword()))
-        {
-            System.out.print("ss");
-            HttpSession session=request.getSession();
-            session.setAttribute("cardId",Integer.parseInt(signUp.getCardId()));
-            response.sendRedirect("/HostelWorld/home");
-            return null;
-        }
-        else {
-            System.out.print("sss");
-            result="会员号或密码不正确";
-            return new ModelAndView("login", "result", result);
-        }
-    }
 
     @ResponseBody
     @RequestMapping(value = "/signup.do")

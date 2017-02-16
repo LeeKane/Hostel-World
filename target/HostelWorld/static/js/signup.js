@@ -14,16 +14,10 @@ app.controller("loginController", function($scope, $http) {
                 Materialize.toast('注册成功!', 6000);
                 $scope.active='signupSuccess';
                 $scope.new=data;
+                $scope.cardId=data.cardId;
             }).error(function(data, status){
                 $scope.signupError='用户名已存在';
             })
     };
-    $scope.signin=function()
-    {
-        $http({
-            method: "POST",
-            url: "/HostelWorld/signin.do",
-            data: {cardId:$scope.new.cardId,password:$scope.new.password}
-        })
-    }
+   
 });
