@@ -1,55 +1,82 @@
 <script src="/HostelWorld/static/js/angular.js"></script>
-<div class="container" ng-app="vipApp" ng-controller="vipController">
-<div class="row">
-    <div id="overview">
-        <div class="col s12 m9 l10">
-            <div class="row">
-                <div class="col s12 m6 l5">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="promo" src="/HostelWorld/static/images/vip.jpg">
-                        </div>
-                        <div class="card-content">
-                            <table class="bordered">
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="vcard-fullname" itemprop="name">$!result.user.username</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员号 $!result.user.cardId</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="join-label">Joined on </span>
-                                        <local-time class="join-date">
-                                           2008-8-8
-                                        </local-time>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col s12 m6 l7">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col s12">
-                                <ul class="tabs">
-                                    <li class="tab col s6 m2"><a ng-click="active='vip'">会员卡</a></li>
-                                    <li class="tab col s6 m2"><a ng-click="active='info'">统计信息</a></li>
-                                </ul>
-                            </div>
-                            <div ng-show="active=='vip'">
-                                vip
+<div>
+    <div class="section no-pad-bot">
+        <section id="top">
+            <div class="layer container">
+            </div>
+            <div class="splash layer" data-depth="0.10"><img style="padding-left: 20%" src="/HostelWorld/static/images/splash-contacto.png"></div>
+        </section>
+    </div>
+    <div class="container" ng-app="vipApp" ng-controller="vipController">
+        <div class="row">
+            <div id="overview">
+                <div class="col s12 m11 l11 offset-l1 offset-m1">
+                    <div class="row">
+                        <div class="col s12 m6 l5">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="promo" src="/HostelWorld/static/images/vip.jpg">
                                 </div>
-                            <div ng-show="active=='info'">
-                                info
+                                <div class="card-content">
+                                    <table class="bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="vcard-fullname" itemprop="name">$!result.user.username</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员号 $!result.user.cardId</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="join-label"> 于 </span>
+                                                <local-time class="join-date">
+                                                    2008-8-8
+                                                </local-time>
+                                                <span class="join-label"> 加入</span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m6 l7">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <ul class="tabs">
+                                            <li class="tab col s6 m2"><a ng-click="active='vip'">会员卡</a></li>
+                                            <li class="tab col s6 m2"><a ng-click="active='info'">统计信息</a></li>
+                                        </ul>
+                                    </div>
+                                    <div ng-show="active=='vip'" class="col s12"">
+                                    <table class="bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <strong class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员号 $!result.card.cardId</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="join-label"> 于 </span>
+                                                <local-time class="join-date">
+                                                    $!result.card.stopDate
+                                                </local-time>
+                                                <span class="join-label"> 终止 </span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div ng-show="active=='info'" class="col s12">
+                                    info
                                 </div>
                             </div>
                         </div>
@@ -59,7 +86,14 @@
         </div>
     </div>
 </div>
-    </div>
 
 <script src="/HostelWorld/static/js/vip.js"></script>
 
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>

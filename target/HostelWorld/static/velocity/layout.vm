@@ -20,7 +20,9 @@
 <main>
     $screen_content
 </main>
+<footer>
     #parse('footer.vm')
+</footer>
 
 
 <!--  Scripts-->

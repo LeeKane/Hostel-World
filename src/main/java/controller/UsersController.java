@@ -3,12 +3,14 @@ package controller;
 /**
  * Created by mac on 16/7/16.
  */
+import bean.Card;
 import bean.SignUp;
 import bean.user;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import service.CardService;
 import service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,8 @@ import java.util.Map;
 public class UsersController {
     @Autowired
     private userService userService;
+    @Autowired
+    private CardService cardService;
 
     @RequestMapping(value = "/showUser",method = RequestMethod.GET)
     public String showUser(@RequestParam("id") String id, ModelMap modelMap) {
@@ -63,10 +67,11 @@ public class UsersController {
         ModelMap result=new ModelMap();
 
         user user = userService.getUser((Integer) request.getSession().getAttribute("cardId"));
+        Card card = cardService.getCard((Integer) request.getSession().getAttribute("cardId"));
         //List<StarRepo> starRepos = userInfoService.getStaredRepo(user.getLogin());
         result.put("type", "USER");
         result.put("user", user);
-
+        result.put("card", card);
         return new ModelAndView("vip","result",result);
     }
 

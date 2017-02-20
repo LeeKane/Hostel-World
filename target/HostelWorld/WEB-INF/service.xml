@@ -5,5 +5,5 @@
 
     <!-- Service层的设置 -->
     <bean id="userService" class="service.impl.userServiceImpl"/>
-
+    <bean id="CardService" class="service.impl.CardServiceImpl"/>
 </beans>
