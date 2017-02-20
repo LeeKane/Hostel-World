@@ -1,0 +1,65 @@
+<script src="/HostelWorld/static/js/angular.js"></script>
+<div class="container" ng-app="vipApp" ng-controller="vipController">
+<div class="row">
+    <div id="overview">
+        <div class="col s12 m9 l10">
+            <div class="row">
+                <div class="col s12 m6 l5">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="promo" src="/HostelWorld/static/images/vip.jpg">
+                        </div>
+                        <div class="card-content">
+                            <table class="bordered">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="vcard-fullname" itemprop="name">$!result.user.username</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员号 $!result.user.cardId</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="join-label">Joined on </span>
+                                        <local-time class="join-date">
+                                           2008-8-8
+                                        </local-time>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l7">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col s12">
+                                <ul class="tabs">
+                                    <li class="tab col s6 m2"><a ng-click="active='vip'">会员卡</a></li>
+                                    <li class="tab col s6 m2"><a ng-click="active='info'">统计信息</a></li>
+                                </ul>
+                            </div>
+                            <div ng-show="active=='vip'">
+                                vip
+                                </div>
+                            <div ng-show="active=='info'">
+                                info
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+<script src="/HostelWorld/static/js/vip.js"></script>
+

@@ -57,6 +57,18 @@ public class UsersController {
         String result="";
         return new ModelAndView("login", "resut", result);
     }
+    @RequestMapping(value = "/vip")
+    public ModelAndView vip(HttpServletRequest request,
+                            HttpServletResponse response)throws Exception {
+        ModelMap result=new ModelMap();
+
+        user user = userService.getUser((Integer) request.getSession().getAttribute("cardId"));
+        //List<StarRepo> starRepos = userInfoService.getStaredRepo(user.getLogin());
+        result.put("type", "USER");
+        result.put("user", user);
+
+        return new ModelAndView("vip","result",result);
+    }
 
     @RequestMapping(value = "/login.do")
     public ModelAndView login(String cardId,String password,HttpServletRequest request,
@@ -98,4 +110,5 @@ public class UsersController {
         result.put("password",usernew.getPassword());
         return result;
     }
+
 }
