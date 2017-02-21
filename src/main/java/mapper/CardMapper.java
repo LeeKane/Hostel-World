@@ -14,4 +14,6 @@ public interface CardMapper {
     Card getCard(@Param("cardId")int cardId);
     @Update("update card set activatied=1,activatiedOverDate=#{activatiedOverDate} where cardId=#{cardId};")
     void cardActivitied(@Param("activatiedOverDate")java.sql.Date activatiedOverDate,@Param("cardId")int cardId);
+    @Update("update card set balance=0,balance=balance+#{income} where cardId=#{cardId};")
+    void income(@Param("income")double income,@Param("cardId")int cardId);
 }

@@ -49,4 +49,9 @@ public class userServiceImpl implements userService {
         userMapper.insertCard(stopDate);
     }
 
+    @Override
+    public void modifyName(String username, int cardId) {
+        userMapper.updateUsername(username,cardId);
+    }
+
 }

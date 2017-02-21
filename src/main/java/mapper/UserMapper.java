@@ -19,4 +19,6 @@ public interface UserMapper {
     void insertUser(@Param("password")String password,@Param("username")String username);
     @Insert("INSERT INTO card (activatied,stopDate,accountId) values (0,#{stopDate},1)")
     void insertCard(@Param("stopDate")java.sql.Date stopDate);
+    @Update("update user set username=#{username} where  cardId = #{cardId}")
+    void updateUsername(@Param("username")String username,@Param("cardId")int cardId);
 }

@@ -28,4 +28,9 @@ public class CardServiceImpl implements CardService {
         cardMapper.cardActivitied(activatiedOverDate,cardId);
     }
 
+    @Override
+    public void income(double income, int cardId) {
+        cardMapper.income(income,cardId);
+    }
+
 }

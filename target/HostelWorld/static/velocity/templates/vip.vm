@@ -22,11 +22,8 @@
                                     <table class="bordered">
                                         <tbody>
                                         <tr>
-                                            <td id="username" style="display: flex;">
-                                                <div class="vcard-fullname" itemprop="name">$!result.user.username</div>
-                                                <a id="usernamebtn" class="btn-floating btn-modify btn-hidden">
-                                                    <i class="large material-icons">mode_edit</i>
-                                                </a>
+                                            <td>
+                                                <div class="vcard-fullname" itemprop="name" >$!result.user.username</div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -42,10 +39,24 @@
                                                         取消资格
                                                     </a>
                                                 #else
-                                                    <div class="vcard-fullname materialize-red-text text-lighten-2" itemprop="name">会员未激活</div>
-                                                    <a id="vipbtn" href="/HostelWorld/activitied" class="waves-effect waves-light btn btn-modify btn-hidden">
+                                                    <div ng-show="modifyActi=='normal'" style="display: flex;">
+                                                    <div class="vcard-fullname materialize-red-text text-lighten-2" itemprop="name" >会员未激活</div>
+                                                    <a id="vipbtn" ng-click="modifyActi='modify'" class="waves-effect waves-light btn btn-modify btn-hidden">
                                                         激活
                                                     </a>
+                                                    </div>
+                                                    <div ng-show="modifyActi=='modify'">
+                                                        <form name="incomeFrom">
+                                                        充值金额:
+                                                        <input placeholder="1000"  ng-model="income" name="income" ng-minlength="4" required type="number" class="validate">
+                                                        <span class="materialize-red-text text-lighten-2" ng-show="incomeFrom.income.$error.required || incomeFrom.income.$invalid">一次充值满1000元可激活</span>
+                                                        <div>
+                                                            <a ng-show="incomeFrom.income.$valid " ng-click="actived()"  class="waves-effect waves-light btn btn-modify">
+                                                                充值并激活
+                                                            </a>
+                                                        </div>
+                                                        </form>
+                                                    </div>
                                                 #end
                                             </td>
                                         </tr>
@@ -54,6 +65,8 @@
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="col s12 m6 l7">
                             <div class="card">
@@ -65,13 +78,38 @@
                                         </ul>
                                     </div>
                                     <div ng-show="active=='vip'" class="col s12"">
+
+
+                                    <form class="Field" name="nameForm">
+                                        <strong class="Field-label">用户名 :</strong>
+                                        <div ng-show="nameModify=='normal'" id="username" class="Field-content" style="display: flex;">
+                                        <div>
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.user.username</span>
+                                        </div>
+                                        <a id="usernamebtn" class="btn-floating btn-modify btn-hidden" ng-click="nameModify='modify'">
+                                            <i class="large material-icons">mode_edit</i>
+                                        </a>
+                                    </div>
+                                        <div ng-show="nameModify=='modify'" class="Field-content">
+                                                <input placeholder="$!result.user.username"  ng-model="username" name="username"ng-minlength="3" ng-maxlength="10" required type="text" class="validate">
+                                            <span class="materialize-red-text text-lighten-2" ng-show="nameForm.username.$error.required || nameForm.username.$invalid">用户名由3-10位的合法字符组成。</span>
+                                            <div>
+                                            <a  ng-show="nameForm.username.$valid " ng-click="modifyName()" class="waves-effect waves-light btn">
+                                                保存
+                                            </a>
+                                            <a  class="waves-effect waves-light btn  grey" ng-click="nameModify='normal'">
+                                                取消
+                                            </a>
+                                                </div>
+                                            </div>
+                                    </form>
                                     <form class="Field"><strong class="Field-label">会员号 :</strong><div class="Field-content">
                                         <div>
                                         <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.cardId</span>
                                         </div>
                                     </div>
                                     </form>
-                                    <form class="Field"><strong class="Field-label">会员资格终止时间 :</strong><div class="Field-content">
+                                    <form class="Field"><strong class="Field-label">会员资格终止时间 :</strong><div class="Field-content" >
                                         <div>
                                             #if($result.card.activatied==0)
                                             <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">于 <local-time class="join-date">

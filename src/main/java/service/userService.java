@@ -12,5 +12,6 @@ public interface userService {
     public user getUser(int cardId);
     public user getUserByName(String username);
     public void inserUser(String password ,String username);
+    public void modifyName(String username,int cardId);
 }
 

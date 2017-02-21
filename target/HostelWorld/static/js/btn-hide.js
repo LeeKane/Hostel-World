@@ -2,7 +2,7 @@
  * Created by LeeKane on 17/2/21.
  */
 $(document).ready(function(){
-    $("td#username").hover(function(){
+    $("div#username").hover(function(){
         $("a#usernamebtn").removeClass("btn-hidden");
     },function(){
         $("a#usernamebtn").addClass("btn-hidden");

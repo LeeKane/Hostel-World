@@ -6,6 +6,7 @@ package controller;
 import bean.Card;
 import bean.SignUp;
 import bean.user;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -62,12 +63,12 @@ public class UsersController {
         return new ModelAndView("login", "resut", result);
     }
     @RequestMapping(value = "/activitied")
-    public void activitied(HttpServletRequest request,
+    public void activitied(@RequestBody Map<String, Object> map,HttpServletRequest request,
                                    HttpServletResponse response)throws Exception {
-        String result="";
+        double income=Double.parseDouble(map.get("income").toString());
         Card card = cardService.getCard((Integer) request.getSession().getAttribute("cardId"));
         cardService.cardActivited(card.getCardId());
-        response.sendRedirect("/HostelWorld/vip");
+        cardService.income(income,card.getCardId());
     }
     @RequestMapping(value = "/vip")
     public ModelAndView vip(HttpServletRequest request,
@@ -110,7 +111,13 @@ public class UsersController {
         }
     }
 
-
+    @RequestMapping(value = "/modifyName.do")
+    public void modifyName(@RequestBody Map<String, String> map,HttpServletRequest request,
+                           HttpServletResponse response)throws Exception {
+        String username= map.get("username").toString();
+        int cardId=(Integer) request.getSession().getAttribute("cardId");
+        userService.modifyName(username,cardId);
+    }
 
     @ResponseBody
     @RequestMapping(value = "/signup.do")
