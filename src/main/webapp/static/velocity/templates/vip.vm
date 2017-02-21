@@ -22,8 +22,11 @@
                                     <table class="bordered">
                                         <tbody>
                                         <tr>
-                                            <td>
+                                            <td id="username" style="display: flex;">
                                                 <div class="vcard-fullname" itemprop="name">$!result.user.username</div>
+                                                <a id="usernamebtn" class="btn-floating btn-modify btn-hidden">
+                                                    <i class="large material-icons">mode_edit</i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -32,12 +35,18 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <span class="join-label"> 于 </span>
-                                                <local-time class="join-date">
-                                                    2008-8-8
-                                                </local-time>
-                                                <span class="join-label"> 加入</span>
+                                            <td id="vip" style="display: flex;">
+                                                #if($result.card.activatied==1)
+                                                    <div class="vcard-fullname green-text text-lighten-2" itemprop="name">会员已激活</div>
+                                                    <a id="vipbtn" class="waves-effect waves-light btn btn-modify btn-hidden">
+                                                        取消资格
+                                                    </a>
+                                                #else
+                                                    <div class="vcard-fullname materialize-red-text text-lighten-2" itemprop="name">会员未激活</div>
+                                                    <a id="vipbtn" href="/HostelWorld/activitied" class="waves-effect waves-light btn btn-modify btn-hidden">
+                                                        激活
+                                                    </a>
+                                                #end
                                             </td>
                                         </tr>
                                         </tbody>
@@ -56,24 +65,55 @@
                                         </ul>
                                     </div>
                                     <div ng-show="active=='vip'" class="col s12"">
-                                    <table class="bordered">
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <strong class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员号 $!result.card.cardId</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="join-label"> 于 </span>
-                                                <local-time class="join-date">
-                                                    $!result.card.stopDate
-                                                </local-time>
-                                                <span class="join-label"> 终止 </span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    <form class="Field"><strong class="Field-label">会员号 :</strong><div class="Field-content">
+                                        <div>
+                                        <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.cardId</span>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <form class="Field"><strong class="Field-label">会员资格终止时间 :</strong><div class="Field-content">
+                                        <div>
+                                            #if($result.card.activatied==0)
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">于 <local-time class="join-date">
+                                                $!result.card.stopDate
+                                                </local-time> 终止</span>
+                                                #else
+                                                    <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员资格已激活</span>
+                                                #end
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <form class="Field"><strong class="Field-label">会员激活有效时间 :</strong><div class="Field-content">
+                                        <div>
+                                            #if($result.card.activatied==1)
+
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">在 <local-time class="join-date">
+                                                $!result.card.activatiedOverDate
+                                                </local-time> 之前有效</span>
+                                                #else
+                                                    <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">会员资格未激活</span>
+                                                #end
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <form class="Field"><strong class="Field-label">会员等级 :</strong><div class="Field-content">
+                                        <div>
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.level </span> 级
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <form class="Field"><strong class="Field-label">总计消费 :</strong><div class="Field-content">
+                                        <div>
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.consumption </span> 元
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <form class="Field"><strong class="Field-label">会员积分 :</strong><div class="Field-content">
+                                        <div>
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.scocer </span> 分
+                                        </div>
+                                    </div>
+                                    </form>
                                 </div>
                                 <div ng-show="active=='info'" class="col s12">
                                     info
@@ -88,7 +128,7 @@
 </div>
 
 <script src="/HostelWorld/static/js/vip.js"></script>
-
+<script src="/HostelWorld/static/js/materialize.js"></script>
 <script src="/HostelWorld/static/js/parallax.js"></script>
 <script>
     $(document).ready(function(e) {
@@ -97,3 +137,4 @@
     });
 </script>
 <script src="/HostelWorld/static/js/js.js"></script>
+<script src="/HostelWorld/static/js/btn-hide.js"></script>

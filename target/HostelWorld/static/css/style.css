@@ -18,6 +18,34 @@ p {
   padding-top: 5%;
   width: 85%;
 }
+.Field
+{
+  padding: 23px 0;
+  border-bottom: 1px solid #ebeef5;
+}
+.Field-content {
+  padding: 0 64px 0 240px;
+  line-height: 36px;
+}
+.Field-label {
+  position: absolute;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 36px;
+  color: #333;
+  padding-left: 22px;
+}
+.btn-modify
+{
+  margin-left: 105px;
+}
+.btn-hidden:not(:focus) {
+  opacity: 0;
+}
+td
+{
+  padding: 22px 22px;
+}
 button .disabled
 {
   background-color: #DFDFDF !important;

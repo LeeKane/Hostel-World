@@ -61,6 +61,14 @@ public class UsersController {
         String result="";
         return new ModelAndView("login", "resut", result);
     }
+    @RequestMapping(value = "/activitied")
+    public void activitied(HttpServletRequest request,
+                                   HttpServletResponse response)throws Exception {
+        String result="";
+        Card card = cardService.getCard((Integer) request.getSession().getAttribute("cardId"));
+        cardService.cardActivited(card.getCardId());
+        response.sendRedirect("/HostelWorld/vip");
+    }
     @RequestMapping(value = "/vip")
     public ModelAndView vip(HttpServletRequest request,
                             HttpServletResponse response)throws Exception {
