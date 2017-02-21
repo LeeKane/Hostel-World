@@ -102,6 +102,12 @@
                                         </div>
                                     </div>
                                     </form>
+                                    <form class="Field"><strong class="Field-label">会员卡余额 :</strong><div class="Field-content">
+                                        <div>
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.balance </span> 元
+                                        </div>
+                                    </div>
+                                    </form>
                                     <form class="Field"><strong class="Field-label">总计消费 :</strong><div class="Field-content">
                                         <div>
                                             <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.consumption </span> 元

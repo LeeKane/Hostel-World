@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32641407-f2b8-4990-acad-28e4c022b102" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/btn-hide.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/UsersController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/UsersController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/CardMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/CardMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/impl/CardServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/impl/CardServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/velocity/templates/vip.vm" afterPath="$PROJECT_DIR$/src/main/webapp/static/velocity/templates/vip.vm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/static/css/style.css" afterPath="$PROJECT_DIR$/target/HostelWorld/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/static/velocity/templates/vip.vm" afterPath="$PROJECT_DIR$/target/HostelWorld/static/velocity/templates/vip.vm" />
     </list>
     <ignored path="HostelWorld.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,8 +105,8 @@
       <file leaf-file-name="vip.vm" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/velocity/templates/vip.vm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+            <state relative-caret-position="390">
+              <caret line="106" column="138" selection-start-line="106" selection-start-column="138" selection-end-line="106" selection-end-column="138" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -232,8 +224,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-6" />
-    <option name="y" value="147" />
+    <option name="x" value="-8" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -1270,15 +1262,15 @@
       <workItem from="1487145110854" duration="988000" />
       <workItem from="1487146173325" duration="13464000" />
       <workItem from="1487589151323" duration="5872000" />
-      <workItem from="1487655816394" duration="7513000" />
+      <workItem from="1487655816394" duration="7883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76080000" />
+    <option name="totallyTimeSpent" value="76450000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="147" width="1280" height="773" extended-state="0" />
+    <frame x="-8" y="23" width="1280" height="773" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1754,8 +1746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/velocity/templates/vip.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+        <state relative-caret-position="390">
+          <caret line="106" column="138" selection-start-line="106" selection-start-column="138" selection-end-line="106" selection-end-column="138" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />

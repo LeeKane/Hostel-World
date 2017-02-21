@@ -37,12 +37,12 @@
                                         <tr>
                                             <td id="vip" style="display: flex;">
                                                 #if($result.card.activatied==1)
-                                                    <div class="vcard-fullname green-text text-lighten-2" itemprop="name">会员资格已激活</div>
+                                                    <div class="vcard-fullname green-text text-lighten-2" itemprop="name">会员已激活</div>
                                                     <a id="vipbtn" class="waves-effect waves-light btn btn-modify btn-hidden">
                                                         取消资格
                                                     </a>
                                                 #else
-                                                    <div class="vcard-fullname materialize-red-text text-lighten-2" itemprop="name">会员资格未激活</div>
+                                                    <div class="vcard-fullname materialize-red-text text-lighten-2" itemprop="name">会员未激活</div>
                                                     <a id="vipbtn" href="/HostelWorld/activitied" class="waves-effect waves-light btn btn-modify btn-hidden">
                                                         激活
                                                     </a>
@@ -99,6 +99,12 @@
                                     <form class="Field"><strong class="Field-label">会员等级 :</strong><div class="Field-content">
                                         <div>
                                             <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.level </span> 级
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <form class="Field"><strong class="Field-label">会员卡余额 :</strong><div class="Field-content">
+                                        <div>
+                                            <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.balance </span> 元
                                         </div>
                                     </div>
                                     </form>
