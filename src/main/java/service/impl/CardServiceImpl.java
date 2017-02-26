@@ -2,6 +2,7 @@ package service.impl;
 
 import bean.Card;
 import mapper.CardMapper;
+import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.CardService;
 
@@ -13,6 +14,8 @@ import java.util.Calendar;
 public class CardServiceImpl implements CardService {
     @Autowired
     private CardMapper cardMapper;
+    @Autowired
+    private UserMapper userMapper;
     @Override
     public Card getCard(int cardId) {
         return cardMapper.getCard(cardId);
@@ -31,6 +34,12 @@ public class CardServiceImpl implements CardService {
     @Override
     public void income(double income, int cardId) {
         cardMapper.income(income,cardId);
+    }
+
+    @Override
+    public void cancel(int cardId) {
+        cardMapper.cancel(cardId);
+        userMapper.deleteUser(cardId);
     }
 
 }

@@ -34,10 +34,23 @@
                                         <tr>
                                             <td id="vip" style="display: flex;">
                                                 #if($result.card.activatied==1)
+                                                <div ng-show="cancelVip=='normal'" style="display: flex;">
                                                     <div class="vcard-fullname green-text text-lighten-2" itemprop="name">会员已激活</div>
-                                                    <a id="vipbtn" class="waves-effect waves-light btn btn-modify btn-hidden">
+                                                    <a id="vipbtn" ng-click="cancelVip='cancel'" class="waves-effect waves-light btn btn-modify btn-hidden">
                                                         取消资格
                                                     </a>
+                                                    </div>
+                                                    <div ng-show="cancelVip=='cancel'">
+                                                        <span class="materialize-red-text text-lighten-2">确定要取消会员资格吗?(如果取消会员资格你的余额会存你你的银行卡中)</span>
+                                                        <div>
+                                                            <a  ng-click="cancel()" class="waves-effect waves-light btn">
+                                                                确定
+                                                            </a>
+                                                            <a  class="waves-effect waves-light btn  grey" ng-click="cancelVip='normal'">
+                                                                取消
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 #else
                                                     <div ng-show="modifyActi=='normal'" style="display: flex;">
                                                     <div class="vcard-fullname materialize-red-text text-lighten-2" itemprop="name" >会员未激活</div>

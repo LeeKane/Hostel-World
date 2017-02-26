@@ -21,4 +21,6 @@ public interface UserMapper {
     void insertCard(@Param("stopDate")java.sql.Date stopDate);
     @Update("update user set username=#{username} where  cardId = #{cardId}")
     void updateUsername(@Param("username")String username,@Param("cardId")int cardId);
+    @Delete("delete from user where cardId = #{cardId}")
+    void deleteUser(int cardId);
 }

@@ -5,6 +5,7 @@ angular.module("vipApp",[]).controller("vipController",function($scope, $http) {
     $scope.active='vip';
     $scope.nameModify='normal';
     $scope.modifyActi='normal';
+    $scope.cancelVip='normal';
     $scope.modifyName=function () {
         $http({
             method: "POST",
@@ -36,5 +37,17 @@ angular.module("vipApp",[]).controller("vipController",function($scope, $http) {
             Materialize.toast('需要充值1000元以上来激活!', 6000);
         }
     }
+    $scope.cancel=function () {
+        $http({
+            method: "POST",
+            url: "/HostelWorld/cancel",
+        }).success(function (data, status) {
+            Materialize.toast('取消成功!', 6000);
+            window.location.href = "login";
+        }).error(function (data, status) {
+            Materialize.toast('修改失败!', 6000);
+        })
+    }
+
 
 });

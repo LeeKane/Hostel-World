@@ -131,4 +131,13 @@ public class UsersController {
         return result;
     }
 
+    @RequestMapping(value = "/cancel")
+    public void cancel(HttpServletRequest request,
+                           HttpServletResponse response)throws Exception {
+
+        int cardId=(Integer) request.getSession().getAttribute("cardId");
+        HttpSession session=request.getSession();
+        session.removeAttribute("cardId");
+        cardService.cancel(cardId);
+    }
 }

@@ -2,6 +2,7 @@ package mapper;
 
 import bean.Card;
 import bean.user;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -16,4 +17,7 @@ public interface CardMapper {
     void cardActivitied(@Param("activatiedOverDate")java.sql.Date activatiedOverDate,@Param("cardId")int cardId);
     @Update("update card set balance=0,balance=balance+#{income} where cardId=#{cardId};")
     void income(@Param("income")double income,@Param("cardId")int cardId);
+    @Delete("delete from card WHERE cardId = #{cardId}")
+    void cancel(@Param("cardId")int cardId);
+
 }

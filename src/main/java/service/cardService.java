@@ -9,4 +9,5 @@ public interface CardService {
     public Card getCard(int cardId);
     public void cardActivited(int cardId);
     public void income(double income,int cardId);
+    public void cancel(int cardId);
 }
