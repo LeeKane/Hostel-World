@@ -5,6 +5,8 @@ import bean.user;
 import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.userService;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 /**
  * Created by mac on 16/7/17.
  */
+@Component
 public class userServiceImpl implements userService {
     @Autowired
     private UserMapper userMapper;
@@ -53,5 +56,10 @@ public class userServiceImpl implements userService {
     public void modifyName(String username, int cardId) {
         userMapper.updateUsername(username,cardId);
     }
+
+//    @Scheduled(fixedDelay = 30*1000)
+//    public void TaskJob() {
+//        System.out.println("test second annotation style ...");
+//    }
 
 }

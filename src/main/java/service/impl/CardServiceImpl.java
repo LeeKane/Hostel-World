@@ -4,6 +4,7 @@ import bean.Card;
 import mapper.CardMapper;
 import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import service.CardService;
 
 import java.util.Calendar;

@@ -524,7 +524,6 @@ header.emiliano.headSalmon .btnMenu{background:#c4002b;border-color:#c4002b}
 header.salazar.headSalmon .btnMenu{background:#bfa966;border-color:#bfa966}
 
 /*FOOTER*/
-footer{margin-top:-70px}
 footer .legal{line-height:33px;font-size:13px;position:absolute;right:4%;}
 footer .politicas{margin:0 -30px;top:-28px; left: 155px;font-family:'Gotham-Light';font-size:12px;opacity:0.6;position:relative}
 footer .politicas:hover{opacity:1}

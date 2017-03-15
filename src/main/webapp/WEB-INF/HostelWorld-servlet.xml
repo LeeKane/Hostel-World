@@ -45,7 +45,9 @@
 
     <mvc:mapping path="/**" />
         <mvc:exclude-mapping path="/login"/>
+        <mvc:exclude-mapping path="/hostelLogin"/>
         <mvc:exclude-mapping path="/signup.do"/>
+        <mvc:exclude-mapping path="/hostelSignup.do"/>
         <mvc:exclude-mapping path="/login.do"/>
         <mvc:exclude-mapping path="/overview"/>
         <mvc:exclude-mapping path="/HostelWorld/static/*"/>

@@ -56,7 +56,7 @@
                 <img src="/HostelWorld/static/images/proy-proyectos.png" class="imgProy">
             </a>
             
-        	<a href="proyecto-liderar.html" class="proy liderar">
+        	<a href="/HostelWorld/hostelLogin" class="proy liderar">
             	<div class="copy">
                     <p><strong>客栈入口</strong>
                         <br>我是加盟客栈</p>
