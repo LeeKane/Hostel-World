@@ -62,6 +62,11 @@ public class UsersController {
         String result="";
         return new ModelAndView("login", "resut", result);
     }
+    @RequestMapping(value = "/manager")
+    public ModelAndView manager() {
+        String result="";
+        return new ModelAndView("manager", "resut", result);
+    }
     @RequestMapping(value = "/activitied")
     public void activitied(@RequestBody Map<String, Object> map,HttpServletRequest request,
                                    HttpServletResponse response)throws Exception {
@@ -110,6 +115,33 @@ public class UsersController {
             return new ModelAndView("login", "result", result);
         }
     }
+    @ResponseBody
+    @RequestMapping(value = "/managerLogin.do")
+    public Map managerLogin(@RequestBody user user,HttpServletRequest request,
+                                     HttpServletResponse response)throws Exception {
+        Map<String, Object> responseMap = new HashMap<String, Object>();
+        String result="";
+        if(user.getUsername()=="")
+        {
+            result="账号号或密码不正确";
+            responseMap.put("result",result);
+            return responseMap;
+        }
+
+        if(user.getUsername().equals("admin") && user.getPassword().equals("123456"))
+        {
+
+            HttpSession session=request.getSession();
+            session.setAttribute("cardId",666666);
+            responseMap.put("user",user);
+            return responseMap;
+        }
+        else {
+            result="账号或密码不正确";
+            responseMap.put("result",result);
+            return  responseMap;
+        }
+    }
 
     @RequestMapping(value = "/modifyName.do")
     public void modifyName(@RequestBody Map<String, String> map,HttpServletRequest request,
@@ -140,4 +172,5 @@ public class UsersController {
         session.removeAttribute("cardId");
         cardService.cancel(cardId);
     }
+
 }

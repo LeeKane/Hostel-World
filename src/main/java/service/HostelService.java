@@ -12,5 +12,7 @@ public interface HostelService {
 
     public Hostel getHostel(int id);
     public Hostel getHostelByName(String name);
+    public List getApplications();
     public void inserHostel(String name ,String password,String city,String address,String info,String license);
+    public void pass(String name);
 }

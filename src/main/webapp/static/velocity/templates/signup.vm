@@ -1,5 +1,5 @@
 #set($layout="noLayout.vm")
-<script src="/HostelWorld/static/js/angular.js"></script>
+
 <header>
     <nav class="white" role="navigation">
         <div class="nav-wrapper header-container">
@@ -38,12 +38,3 @@
     </div>
 </div>
 
-<script src="/HostelWorld/static/js/materialize.js"></script>
-<script src="/HostelWorld/static/js/parallax.js"></script>
-<script>
-    $(document).ready(function(e) {
-        var scene3 = document.getElementById('top');
-        var parallax = new Parallax(scene3);
-    });
-</script>
-<script src="/HostelWorld/static/js/js.js"></script>

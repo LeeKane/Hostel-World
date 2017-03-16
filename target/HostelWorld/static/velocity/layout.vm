@@ -12,6 +12,7 @@
     <link href="/HostelWorld/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="/HostelWorld/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/HostelWorld/static/js/angular.js"></script>
 </head>
 <body>
 

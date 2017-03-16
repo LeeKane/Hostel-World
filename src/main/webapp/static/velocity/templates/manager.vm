@@ -1,0 +1,74 @@
+#set($layout="noLayout.vm")
+<main ng-app="managerApp" ng-controller="managerController">
+<header>
+    <nav class="white" role="navigation">
+        <div  ng-show="login==false" class="nav-wrapper header-container">
+            <a id="logo-container" href="#" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+        </div>
+        <div  ng-show="login==true" class="nav-wrapper header-container">
+            <a id="logo-container" href="/HostelWorld/home" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+            <ul class="right hide-on-med-and-down" id="user">
+                <li ><a ng-class="{'active':active=='tab1'}" id="uname" ng-click="active='tab1'" class="waves-effect waves-red" style="display: -webkit-box;">统计</a></li>
+                <li ><a  ng-class="{'active':active=='tab2'}" id="uname" ng-click="active='tab2'" class="waves-effect waves-red" style="display: -webkit-box;">审批</a></li>
+                <li ><a  ng-class="{'active':active=='tab3'}" id="uname" ng-click="active='tab3'" class="waves-effect waves-red" style="display: -webkit-box;">结算</a></li>
+                <li><a  id="uname" class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">perm_identity</i><label class="materialize-red-text text-lighten-2">{{user.username}}</label></a></li>
+
+            </ul>
+        </div>
+    </nav>
+</header>
+<div>
+    <div ng-show="login==false">
+    <div>
+    <div class="section no-pad-bot">
+        <section id="top">
+            <div class="layer container">
+                <div class="row center">
+
+                    <h3 class="materialize-red-text text-lighten-2">HostelWorld</h3>
+                    经理入口
+                </div>
+            </div>
+            <div class="splash layer" data-depth="0.10"><img style="padding-left: 20%" src="/HostelWorld/static/images/splash-login.png"></div>
+        </section>
+    </div>
+</div>
+    <div class="row">
+    <div class="col s12 m4 offset-m4 ">
+        <div class="card">
+            <div class="row">
+                <form class="col s12" >
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                            <input id="userid" type="text" class="validate" ng-model="name" placeholder="{{name}}" name="name" >
+                            <label for="userid">经理账号</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                            <input id="password" type="password" class="validate" name="password" ng-model="password" >
+                            <label for="password">密码</label>
+                        </div>
+                    </div>
+                    <label class="row " style="margin-left: 34%">{{result}}</label>
+                    <button  class="waves-effect waves-light btn" type="submit" ng-click="managerLogin()" id="login" style="margin-left: 36%;margin-bottom: 15px;">
+                        登陆</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+    <div ng-show="login==true">
+        <div class="row">
+          <manager-panel></manager-panel>
+        </div>
+        </div>
+</div>
+</main>
+
+<script src="/HostelWorld/static/js/manager.js"></script>

@@ -47,6 +47,10 @@
         <mvc:exclude-mapping path="/login"/>
         <mvc:exclude-mapping path="/hostelLogin"/>
         <mvc:exclude-mapping path="/signup.do"/>
+        <mvc:exclude-mapping path="/manager"/>
+        <mvc:exclude-mapping path="/*.do"/>
+        <mvc:exclude-mapping path="/getApplication.do"/>
+        <mvc:exclude-mapping path="/managerLogin.do"/>
         <mvc:exclude-mapping path="/hostelSignup.do"/>
         <mvc:exclude-mapping path="/login.do"/>
         <mvc:exclude-mapping path="/overview"/>

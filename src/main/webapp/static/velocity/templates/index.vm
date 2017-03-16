@@ -65,7 +65,7 @@
                 <img src="/HostelWorld/static/images/proy-contacto.png" class="imgProy">
             </a>
             
-        	<a href="proyecto-foodpro.html" class="proy foodpro">
+        	<a href="/HostelWorld/manager" class="proy foodpro">
             	<div class="copy">
                     <p><strong>经理入口</strong></p>
                     <div class="arrowIr"></div>

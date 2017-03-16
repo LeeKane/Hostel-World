@@ -12,16 +12,22 @@
     <link href="/HostelWorld/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="/HostelWorld/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/HostelWorld/static/js/angular.js"></script>
+    <script src="/HostelWorld/static/js/materialize.js"></script>
 </head>
 <body>
 <main>
     $screen_content
 </main>
 <!-- Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-<script>if (!window.jQuery) {
-    document.write('<script src="/HostelWorld/static/bin/jquery-2.1.1.min.js"><\/script>');
-}
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>
 </body>
 </html>

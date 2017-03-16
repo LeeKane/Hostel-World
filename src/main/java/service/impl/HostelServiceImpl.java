@@ -1,5 +1,6 @@
 package service.impl;
 
+import bean.Application;
 import bean.Hostel;
 
 import mapper.HostelMapper;
@@ -29,12 +30,24 @@ public class HostelServiceImpl implements HostelService {
     }
 
     @Override
+    public List<Application> getApplications() {
+        return hostelMapper.getApplications();
+    }
+
+    @Override
     public void inserHostel(String name ,String password,String city,String address,String info,String license) {
 
         hostelMapper.insertHostel(name,password,city,address,info,license);
         Calendar calendar = Calendar.getInstance();
         java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
         hostelMapper.insertApplication(name,city,address,info,license,startDate);
+    }
+
+    @Override
+    public void pass(String name) {
+        System.out.println(name+"sss");
+        hostelMapper.pass(name);
+        hostelMapper.passApplication(name);
     }
 
 }

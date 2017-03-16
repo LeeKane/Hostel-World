@@ -4,6 +4,9 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
+nav .active{
+  color:#E57373;
+}
 
 p {
   line-height: 2rem;
@@ -17,6 +20,20 @@ p {
   padding-left: 2%;
   padding-top: 5%;
   width: 85%;
+}
+.badgecol
+{
+  position: relative;
+}
+.applicationbutton
+{
+  margin: 15px auto;
+  text-align: center;
+}
+.applicationbuttonleft
+{
+  margin: 0 20px;
+  background-color: #26a69a;
 }
 .Field
 {

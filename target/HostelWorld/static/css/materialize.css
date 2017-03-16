@@ -3230,7 +3230,7 @@ span.badge.new {
 }
 
 span.badge.new:after {
-  content: " new";
+  content: "";
 }
 
 nav ul a span.badge {
@@ -5331,7 +5331,7 @@ a.waves-effect .waves-ripple {
 
 .collapsible-body p {
   margin: 0;
-  padding: 2rem;
+  padding: .6rem;
 }
 
 .side-nav .collapsible,

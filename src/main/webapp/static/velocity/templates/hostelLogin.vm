@@ -1,6 +1,6 @@
 #set($layout="noLayout.vm")
 <link href="/HostelWorld/static/css/cityPicker.css" rel="stylesheet">
-<script src="/HostelWorld/static/js/angular.js"></script>
+
 <header>
     <nav class="white" role="navigation">
         <div class="nav-wrapper header-container">
@@ -34,7 +34,6 @@
             </ul>
         </div>
     </div>
-
     <div ng-show="active=='signin'"  class="row">
         <div class="col s12 m4 offset-m4 ">
             <div class="card">
@@ -42,7 +41,7 @@
                     <form action="/HostelWorld/login.do" method="post" class="col s12" >
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="userid" type="text" class="validate" ng-model="cardId" placeholder="{{cardId}}" name="cardId" >
+                                <input id="userid" type="text" class="validate" ng-model="cardId" placeholder="{{id}}" name="cardId" >
                                 <label for="userid">客栈号</label>
                             </div>
                         </div>
@@ -128,15 +127,8 @@
     </div>
 </div>
 
+
 <script src="/HostelWorld/static/js/HostelSignup.js"></script>
-<script src="/HostelWorld/static/js/materialize.js"></script>
-<script src="/HostelWorld/static/js/parallax.js"></script>
-<script>
-    $(document).ready(function(e) {
-        var scene3 = document.getElementById('top');
-        var parallax = new Parallax(scene3);
-    });
-</script>
 <script type="text/javascript" src="/HostelWorld/static/js/cityData.js"></script>
 <script type="text/javascript" src="/HostelWorld/static/js/cityPicker.js"></script>
 <script>
@@ -153,4 +145,3 @@
 
     cityPicker.init();
 </script>
-<script src="/HostelWorld/static/js/js.js"></script>

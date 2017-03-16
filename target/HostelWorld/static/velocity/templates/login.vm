@@ -1,5 +1,5 @@
 #set($layout="noLayout.vm")
-<script src="/HostelWorld/static/js/angular.js"></script>
+
 <header>
     <nav class="white" role="navigation">
         <div class="nav-wrapper header-container">
