@@ -1,0 +1,68 @@
+#set($layout="noLayout.vm")
+<nav class="white" role="navigation">
+    <div class="nav-wrapper header-container">
+        <a id="logo-container" href="/HostelWorld/home" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+        <ul class="right hide-on-med-and-down" id="user">
+            <li ><a ng-class="{'active':active=='tab1'}"  ng-click="active='tab1'" class="waves-effect waves-red" style="display: -webkit-box;">发布计划</a></li>
+            <li ><a  ng-class="{'active':active=='tab2'}"  ng-click="active='tab2'" class="waves-effect waves-red" style="display: -webkit-box;">入/离店登记</a></li>
+            <li><a  id="uname" href="/HostelWorld/vip"class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">store</i><label class="materialize-red-text text-lighten-2">$!hostel.name</label></a></li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <div class="section no-pad-bot">
+        <section id="top">
+            <div class="layer container">
+                <br><br>
+                <div class="toptext">
+                    <h1 class="black-text text-lighten-2"><span class="materialize-red-text text-lighten-2">Hostel World</span>为您的客栈提供最完美的展示平台。</h1>
+                </div>
+                <br><br>
+            </div>
+            <div class="splash layer" data-depth="0.10"><img style="padding-left: 20%" src="/HostelWorld/static/images/splash-hostel.png"></div>
+        </section>
+    </div>
+    <div class="row center ">
+                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">开始营业</a>
+    </div>
+    <div class="row center container">
+        <div class="col s3">
+            <div class="center promo promo-example">
+                <i class="large material-icons materialize-red-text text-lighten-2">query_builder</i>
+                <p class="promo-caption">1.发布客栈计划</p>
+                <p class="light center">制定未来一段时间的客栈计划,发布客房数量,客房类型等信息。以便于游客在平台上找到您的客栈并入住。</p>
+            </div>
+        </div>
+        <div class="col s3">
+            <div class="center promo promo-example">
+                <i class="large material-icons materialize-red-text text-lighten-2">forum</i>
+                <p class="promo-caption">2.游客找到您的房源并预订</p>
+                <p class="light center">等待游客找到您的客栈,并提交预定,您将会收到来自房客的预订确认和消息。</p>
+            </div>
+        </div>
+        <div class="col s3">
+            <div class="center promo promo-example">
+                <i class="large material-icons materialize-red-text text-lighten-2">input</i>
+                <p class="promo-caption">3.入/离店登记</p>
+                <p class="light center">等待游客到达您的客栈后,进行入店登记。游客离店时进行离店登记。待经理结算后您将会收到房费。</p>
+            </div>
+        </div>
+        <div class="col s3">
+            <div class="center promo promo-example">
+                <i class="large material-icons materialize-red-text text-lighten-2">equalizer</i>
+                <p class="promo-caption">4.查看客栈营业情况</p>
+                <p class="light center">您可以随时查看您的客栈的营业情况,以便于调整客房计划,帮助您实现最大利润。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>

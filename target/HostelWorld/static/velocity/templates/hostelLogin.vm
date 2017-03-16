@@ -38,10 +38,10 @@
         <div class="col s12 m4 offset-m4 ">
             <div class="card">
                 <div class="row">
-                    <form action="/HostelWorld/login.do" method="post" class="col s12" >
+                    <form action="/HostelWorld/hostelLogin.do" method="post" class="col s12" >
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="userid" type="text" class="validate" ng-model="cardId" placeholder="{{id}}" name="cardId" >
+                                <input id="userid" type="text" class="validate" ng-model="id" placeholder="{{id}}" name="id" >
                                 <label for="userid">客栈号</label>
                             </div>
                         </div>
@@ -114,11 +114,11 @@
             <div class="card">
                 <div class="row center" style="
     padding-top: 12px;">
-                    申请成功成功!您的客栈号为
+                    申请成功!您的客栈号为
                     <h3 class="materialize-red-text text-lighten-2">{{new.id}}</h3>
-                    您可以使用该账号登陆查看自己的客栈信息,
+                    待申请审批通过后,
                     <br>
-                    待申请通过后即可开始营业。
+                    您可以使用该账号登陆查看自己的客栈信息。
                 </div>
                 <button  class="waves-effect waves-light btn"  ng-click="active='signin'" id="signin"  style="margin-left: 39%;margin-bottom: 15px;">
                     登陆</button>

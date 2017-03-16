@@ -65,7 +65,7 @@ app.directive("managerPanel", ['$http', function ($http) {
         },
         template: '<div><div class="container" ng-show= active=="tab1"><p>tab1</p></div>'
         +'<div class="container" ng-show= active=="tab2"><ul class="collapsible badgecol" data-collapsible="accordion">'
-        +"<li ng-repeat= application in applications track by application.read>"
+        +'<li ng-repeat= "application in applications">'
         +'<div class="collapsible-header"><span ng-show= {{application.read}}==0 class="new badge">新申请</span><i ng-show= {{application.read}}==0 class="material-icons">info_outline</i><i ng-show= {{application.read}}==1 class="material-icons">done</i>{{application.name}}</div>'
         +'<div class="collapsible-body"><p>客栈名: {{application.name}}</p><p>申请时间: {{application.date}}</p><p>城市: {{application.city}}</p><p>地址: {{application.address}}</p><p>简介: {{application.info}}</p><p>营业执照: {{application.license}}</p><div ng-show= {{application.read}}==0 class="applicationbutton"><button  ng-click="pass(application)" class="applicationbuttonleft waves-effect waves-light btn">'
         +'通过</button><button  class="waves-effect waves-light btn">拒绝</button></div>'
