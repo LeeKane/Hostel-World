@@ -1,9 +1,6 @@
 package mapper;
 
-import bean.Application;
-import bean.Hostel;
-import bean.Plan;
-import bean.user;
+import bean.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -34,5 +31,7 @@ public interface HostelMapper {
     void addPlan(@Param("hostelId") int hostelId,@Param("startData") java.sql.Date startData,@Param("overData") java.sql.Date overData,@Param("roomNum") int roomNum,@Param("price") double price);
     @Select("SELECT * FROM plan WHERE hostelId = #{hostelId}")
     List<Plan> getPlans(@Param("hostelId") int hostelId);
+    @Select("SELECT startData,overData,roomNum,price,hostel.id,name,city,address,info,license FROM plan,hostel where hostel.city=#{city} and hostel.id=plan.hostelId and startData <= #{startData}")
+    List<SearchHostel> getRequiredHostel(@Param("city") String city, @Param("startData") String startData);
 }
 

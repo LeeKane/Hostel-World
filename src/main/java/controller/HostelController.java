@@ -131,4 +131,17 @@ public class HostelController {
         result.put("plans",plans);
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/getRequiredHostel.do")
+    public Map getRequiredHostel(@RequestBody Map hostel,HttpServletRequest request,
+                        HttpServletResponse response)throws Exception {
+        String city= (String) hostel.get("city");
+        String startData=(String) hostel.get("startData");
+        System.out.println(startData+"ss"+city);
+        List hostels=hostelService.getRequiredHostels(city,startData);
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("hostels",hostels);
+        return result;
+    }
 }

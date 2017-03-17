@@ -75,4 +75,18 @@ public class HostelServiceImpl implements HostelService {
        return hostelMapper.getPlans(hostelId);
     }
 
+    @Override
+    public List getRequiredHostels(String city, String startData) throws ParseException {
+        Date start = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        start = sdf.parse(startData);
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        startData = sdf2.format(start);
+        System.out.println(startData+"ss"+city);
+        List hostels=hostelMapper.getRequiredHostel(city,startData);
+        System.out.println(hostels.get(0));
+        return  hostels;
+
+    }
+
 }

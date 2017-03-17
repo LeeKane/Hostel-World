@@ -1,4 +1,7 @@
-<div>
+<link href="/HostelWorld/static/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+<link href="/HostelWorld/static/css/cityPicker.css" rel="stylesheet">
+<main ng-app="homeApp" ng-controller="homeController">
+<div ng-show="searchFor==false">
     <div class="section no-pad-bot">
         <section id="top">
             <div class="layer container">
@@ -15,21 +18,70 @@
 
     <div class="row center fromcontainer">
             <div class="card-panel fromcard">
-            <div class="card-content positionfrom col s12 m4" style="padding: 10px">
-                <p class="black-text ">地点</p>
+            <div class="card-content positionfrom col s12" style="padding: 10px">
+                <input id="cityChoice" type="text" class="validate" ng-model="cityChoice" name="cityChoice" style="    border-bottom: 1px solid rgba(0, 0, 0, 0.26);color: inherit;text-align: center;" required>
+                <label for="cityChoice" style="color: #E57373">所在城市</label>
+                <input type="hidden" id="province" value="">
+                <input type="hidden" id="city" value="" >
             </div>
-            <div class="card-content timefrom col s12 m4" style="padding: 10px">
-                <p class="black-text ">入住时间</p>
+            <div class="card-content timefrom col s12 " style="padding: 10px">
+                <input  id="dpd1" type="text" class="validate span2" ng-model="startData" style="text-align: center" required>
+                <label for="dpd1" style="color: #E57373">入住时间</label></div>
             </div>
-            <div class="card-content buttonfrom col s12 m4" style="padding: 10px">
-                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">寻找客栈</a>
+            <div class="card-content buttonfrom col s12 " style="padding: 10px">
+                <a ng-click="getRequiredHostel()" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">寻找客栈</a>
             </div>
             </div>
 
     </div>
-</div>
-</div>
 
+    <div ng-show="searchFor==true">
+        <div class="row container">
+            <div class="col s8">
+                <div class="caption-container-main">
+                    <div class="caption-text-container">所有客栈</div>
+                    <div class="caption-bg "></div>
+                </div>
+                <div class="row center " style="margin-left: 0px;margin-right: 0px;">
+                    <div class="card-panel fromcard">
+                        <div class="card-content positionfrom col s12" style="padding: 10px">
+                            <input id="cityChoice1" type="text" class="validate" ng-model="city" name="cityChoice1" style="    border-bottom: 1px solid rgba(0, 0, 0, 0.26);color: inherit;text-align: center;" required>
+                            <label for="cityChoice1" style="color: #E57373">所在城市</label>
+                            <input type="hidden" id="province1" value="">
+                            <input type="hidden" id="city1" value="" >
+                        </div>
+                        <div class="card-content timefrom col s12 " style="padding: 10px">
+                            <input  id="dpd2" type="text" class="validate span2" ng-model="startData" style="text-align: center" required>
+                            <label for="dpd2" style="color: #E57373">入住时间</label></div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col s6" ng-repeat=" hostel in hostels">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="/HostelWorld/static/images/hostelCover.jpg">
+                            <span class="card-title">{{hostel.name}}</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="price">¥ {{hostel.price}}</div>
+                            <div>剩余 <span class="roomNum">{{hostel.roomNum}}</span>间房</div>
+                            <div class="address">地址: {{hostel.address}}</div>
+                            <div class="info">简介: {{hostel.info}}</div>
+                            <div >于 {{hostel.overData}} 前有效</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="caption-container-main">
+                    <div class="caption-text-container">推荐客栈</div>
+                    <div class="caption-bg "></div>
+                </div>
+            </div>
+    </div>
+</main>
+<script src="/HostelWorld/static/js/home.js"></script>
 <script src="/HostelWorld/static/js/parallax.js"></script>
 <script>
     $(document).ready(function(e) {
@@ -38,8 +90,57 @@
     });
 </script>
 <script src="/HostelWorld/static/js/js.js"></script>
+<script type="text/javascript" src="/HostelWorld/static/js/cityData.js"></script>
+<script type="text/javascript" src="/HostelWorld/static/js/cityPicker.js"></script>
+<script>
+    var cityPicker = new IIInsomniaCityPicker({
+        data: cityData,
+        target: '#cityChoice',
+        valType: 'k-v',
+        hideCityInput: '#city',
+        hideProvinceInput: '#province',
+        callback: function(city_id){
 
+        }
+    });
 
+    cityPicker.init();
+
+    var cityPicker1 = new IIInsomniaCityPicker({
+        data: cityData,
+        target: '#cityChoice1',
+        valType: 'k-v',
+        hideCityInput: '#city1',
+        hideProvinceInput: '#province1',
+        callback: function(city_id){
+
+        }
+    });
+
+    cityPicker1.init();
+</script>
+<script src="/HostelWorld/static/js/foundation-datepicker.js"></script>
+<script src="/HostelWorld/static/js/foundation-datepicker.zh-CN.js"></script>
+<script>
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var checkin = $('#dpd1').fdatepicker({
+        onRender: function (date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function (ev) {
+        checkin.hide();
+    }).data('datepicker');
+    var nowTemp1 = new Date();
+    var now1 = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var checkin1 = $('#dpd2').fdatepicker({
+        onRender: function (date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function (ev) {
+        checkin1.hide();
+    }).data('datepicker');
+</script>
 
 
 

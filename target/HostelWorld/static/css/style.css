@@ -96,9 +96,7 @@ button .disabled
 }
 .buttonfrom
 {
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-left-color: #dce0e0;
+
 }
 .header-container
 {
@@ -202,4 +200,17 @@ footer.page-footer {
 {
   margin: 10px 8px 10px 0px;
   padding-bottom: 10px;
+}
+.searchTop
+{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.price
+{
+  color:#E57373;
+}
+.roomNum
+{
+  color:#E57373;
 }

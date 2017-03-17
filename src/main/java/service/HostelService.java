@@ -18,4 +18,5 @@ public interface HostelService {
     public void pass(String name);
     public void addPlan(int hostelId,String startTime,String overTime,int roomNum,double price) throws ParseException;
     public List getPlans(int hostelId);
+    public List getRequiredHostels(String city,String startData) throws ParseException;
 }
