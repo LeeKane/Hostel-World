@@ -1,4 +1,8 @@
 #set($layout="noLayout.vm")
+<script src="//cdn.bootcss.com/angular.js/1.5.0/angular-animate.js"></script>
+
+<link href="/HostelWorld/static/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+<main ng-app="hostelApp" ng-controller="hostelMainController">
 <nav class="white" role="navigation">
     <div class="nav-wrapper header-container">
         <a id="logo-container" href="/HostelWorld/home" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
@@ -9,7 +13,7 @@
         </ul>
     </div>
 </nav>
-<div>
+<div ng-show="active=='tab0'">
     <div class="section no-pad-bot">
         <section id="top">
             <div class="layer container">
@@ -23,7 +27,7 @@
         </section>
     </div>
     <div class="row center ">
-                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">开始营业</a>
+                <a ng-click="active='tab1'" class="btn-large waves-effect waves-light materialize-red lighten-2">开始营业</a>
     </div>
     <div class="row center container">
         <div class="col s3">
@@ -56,13 +60,12 @@
         </div>
     </div>
 </div>
+<div ng-show="active=='tab1'">
+    <plane-panel hostel-id= $!hostel.id></plane-panel>
+</div>
 
+</main>
 
-<script src="/HostelWorld/static/js/parallax.js"></script>
-<script>
-    $(document).ready(function(e) {
-        var scene3 = document.getElementById('top');
-        var parallax = new Parallax(scene3);
-    });
-</script>
-<script src="/HostelWorld/static/js/js.js"></script>
+<script src="/HostelWorld/static/js/hostel.js"></script>
+<script src="/HostelWorld/static/js/foundation-datepicker.js"></script>
+<script src="/HostelWorld/static/js/foundation-datepicker.zh-CN.js"></script>

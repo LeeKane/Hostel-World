@@ -3,13 +3,16 @@ package service.impl;
 import bean.Application;
 import bean.Hostel;
 
+import bean.Plan;
 import mapper.HostelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import service.HostelService;
 
-import java.util.Calendar;
-import java.util.List;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by LeeKane on 17/3/14.
@@ -48,6 +51,28 @@ public class HostelServiceImpl implements HostelService {
         System.out.println(name+"sss");
         hostelMapper.pass(name);
         hostelMapper.passApplication(name);
+    }
+
+    @Override
+    public void addPlan(int hostelId, String startTime, String overTime, int roomNum, double price) throws ParseException {
+        Date start = new Date();
+        Date over = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        start = sdf.parse(startTime);
+        over = sdf.parse(overTime);
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        startTime = sdf2.format(start);
+        overTime =sdf2.format(over);
+        java.util.Date  date  =  new SimpleDateFormat("yyyy-MM-dd").parse(startTime);
+        java.sql.Date  startDate  =  new java.sql.Date(date.getTime());
+        java.util.Date  date1  =  new SimpleDateFormat("yyyy-MM-dd").parse(overTime);
+        java.sql.Date  overDate  =  new java.sql.Date(date1.getTime());
+        hostelMapper.addPlan(hostelId,startDate,overDate,roomNum,price);
+    }
+
+    @Override
+    public List<Plan> getPlans(int hostelId) {
+       return hostelMapper.getPlans(hostelId);
     }
 
 }

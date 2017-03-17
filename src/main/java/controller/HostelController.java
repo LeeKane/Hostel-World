@@ -2,6 +2,7 @@ package controller;
 
 import bean.Application;
 import bean.Hostel;
+import bean.Plan;
 import bean.user;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
@@ -107,5 +108,24 @@ public class HostelController {
         return new ModelAndView("hostelHome", "hostel", hostel);
 
     }
-
+    @ResponseBody
+    @RequestMapping(value = "/addPlan.do")
+    public Map addPlan(@RequestBody Plan plan, HttpServletRequest request,
+                       HttpServletResponse response)throws Exception {
+        hostelService.addPlan(plan.getHostelId(),plan.getStartData(),plan.getOverData(),plan.getRoomNum(),plan.getPrice());
+        Map<String, Object> result = new HashMap<String, Object>();
+        return result;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/getPlans.do")
+    public Map getPlans(@RequestBody Map hostel,HttpServletRequest request,
+                              HttpServletResponse response)throws Exception {
+        String hostelIdStr= (String) hostel.get("hostelId");
+        int hostelId=Integer.parseInt(hostelIdStr);
+        Map<String, Object> result = new HashMap<String, Object>();
+        List<Plan> plans= hostelService.getPlans(hostelId);
+        Collections.reverse(plans);
+        result.put("plans",plans);
+        return result;
+    }
 }

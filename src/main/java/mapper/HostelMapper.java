@@ -2,6 +2,7 @@ package mapper;
 
 import bean.Application;
 import bean.Hostel;
+import bean.Plan;
 import bean.user;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -29,4 +30,9 @@ public interface HostelMapper {
     void pass(@Param("name") String name);
     @Update("update hostel set hostel.application=1 where  name = #{name}")
     void passApplication(@Param("name") String name);
+    @Insert("INSERT INTO plan  (hostelId,startData,overData,roomNum,price) values (#{hostelId},#{startData},#{overData},#{roomNum},#{price})")
+    void addPlan(@Param("hostelId") int hostelId,@Param("startData") java.sql.Date startData,@Param("overData") java.sql.Date overData,@Param("roomNum") int roomNum,@Param("price") double price);
+    @Select("SELECT * FROM plan WHERE hostelId = #{hostelId}")
+    List<Plan> getPlans(@Param("hostelId") int hostelId);
 }
+
