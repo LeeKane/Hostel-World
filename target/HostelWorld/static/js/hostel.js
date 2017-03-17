@@ -69,10 +69,11 @@ app.directive('planePanel',function ($http) {
                     data: {hostelId:$scope.hostelId,startData:$scope.startData,overData:$scope.overData,roomNum:$scope.roomNum,price:$scope.price}
                 }).success(function (data, status){
                     Materialize.toast('添加成功!', 6000);
-
+                    $scope.plans=data.plans;
                 }).error(function(data, status){
 
                 })
+
             }
         },
         template:
@@ -83,7 +84,7 @@ app.directive('planePanel',function ($http) {
         +'<div class="caption-bg "></div>'
         +'</div>'
         +'  <ul class="collapsible popout" data-collapsible="accordion">'
-        +'<li ng-repeat="plan in plans"> <div class="collapsible-header"><i class="material-icons">today</i>{{plan.startData}} 至 {{plan.overData}}</div> <div class="collapsible-body row container"><span class="col s3">开始时间:{{plan.startData}}</span><span class="col s3">结束时间:{{plan.overData}}</span><span class="col s3">房间数:{{plan.roomNum}}</span><span class="col s3">房价:{{plan.price}}</span></div> </li>'
+        +'<li ng-repeat="plan in plans"> <div class="collapsible-header"><i class="material-icons">today</i>{{plan.startData}} 至 {{plan.overData}}</div> <div class="collapsible-body row planInfo" style=" margin:10px 10px 10px 8px"><span class="col s3">开始时间:{{plan.startData}}</span><span class="col s3">结束时间:{{plan.overData}}</span><span class="col s3">房间数:{{plan.roomNum}}</span><span class="col s3">房价:{{plan.price}}</span></div> </li>'
         +'</ul>'
         +'<div>'
         +'<a class="btn-floating btn-large waves-effect waves-light materialize-red-text text-lighten-2" ng-click="addPlane()"><i class="material-icons">add</i></a>'

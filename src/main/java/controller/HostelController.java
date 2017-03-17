@@ -114,6 +114,9 @@ public class HostelController {
                        HttpServletResponse response)throws Exception {
         hostelService.addPlan(plan.getHostelId(),plan.getStartData(),plan.getOverData(),plan.getRoomNum(),plan.getPrice());
         Map<String, Object> result = new HashMap<String, Object>();
+        List<Plan> plans= hostelService.getPlans(plan.getHostelId());
+        Collections.reverse(plans);
+        result.put("plans",plans);
         return result;
     }
     @ResponseBody
