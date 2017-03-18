@@ -31,7 +31,9 @@ public interface HostelMapper {
     void addPlan(@Param("hostelId") int hostelId,@Param("startData") java.sql.Date startData,@Param("overData") java.sql.Date overData,@Param("roomNum") int roomNum,@Param("price") double price);
     @Select("SELECT * FROM plan WHERE hostelId = #{hostelId}")
     List<Plan> getPlans(@Param("hostelId") int hostelId);
-    @Select("SELECT startData,overData,roomNum,price,hostel.id,name,city,address,info,license FROM plan,hostel where hostel.city=#{city} and hostel.id=plan.hostelId and startData <= #{startData}")
+    @Select("SELECT plan.id,startData,overData,roomNum,price,hostel.id as hostelId,name,city,address,info,license FROM plan,hostel where hostel.city=#{city} and hostel.id=plan.hostelId and startData <= #{startData}")
     List<SearchHostel> getRequiredHostel(@Param("city") String city, @Param("startData") String startData);
+    @Select("SELECT plan.id,startData,overData,roomNum,price,hostel.id as hostelId,name,city,address,info,license FROM plan,hostel where plan.id=#{id} and hostel.id=plan.hostelId")
+    SearchHostel getRequiredHostelById(@Param("id") int id);
 }
 

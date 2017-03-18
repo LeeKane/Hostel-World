@@ -1,9 +1,6 @@
 package controller;
 
-import bean.Application;
-import bean.Hostel;
-import bean.Plan;
-import bean.user;
+import bean.*;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import service.HostelService;
+import service.userService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +26,8 @@ import java.util.*;
 public class HostelController {
     @Autowired
     private HostelService hostelService;
+    @Autowired
+    private service.userService userService;
 
     @RequestMapping(value = "/hostelLogin")
     public String hostelLogin() {
@@ -143,5 +144,18 @@ public class HostelController {
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("hostels",hostels);
         return result;
+    }
+    @RequestMapping(value = "/hostelInfo")
+    public ModelAndView hostelInfo(@RequestParam("id") String id, HttpServletRequest request,
+                                   HttpServletResponse response)throws Exception {
+        System.out.println(id);
+        Map<String, Object> result = new HashMap<String, Object>();
+        HttpSession session=request.getSession();
+        int userId= (int) session.getAttribute("cardId");
+        user user=userService.getUser(userId);
+        result.put("user",user);
+        SearchHostel hostel=hostelService.getRequiredHostelsById(Integer.parseInt(id));
+        result.put("hostel",hostel);
+        return new ModelAndView("hostelInfo", "result", result);
     }
 }

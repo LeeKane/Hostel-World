@@ -1,3 +1,4 @@
+#set($layout="userLayout.vm")
 <link href="/HostelWorld/static/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
 <link href="/HostelWorld/static/css/cityPicker.css" rel="stylesheet">
 <main ng-app="homeApp" ng-controller="homeController">
@@ -59,8 +60,8 @@
                 <div class="col s6" ng-repeat=" hostel in hostels">
                     <div class="card">
                         <div class="card-image">
-                            <img src="/HostelWorld/static/images/hostelCover.jpg">
-                            <span class="card-title">{{hostel.name}}</span>
+                            <a href="/HostelWorld/hostelInfo?id={{hostel.id}}" ><img src="/HostelWorld/static/images/hostelCover.jpg"></a>
+                            <a href="/HostelWorld/hostelInfo?id={{hostel.id}}" ><span class="card-title">{{hostel.name}}</span></a>
                         </div>
                         <div class="card-content">
                             <div class="price">¥ {{hostel.price}}</div>

@@ -214,3 +214,49 @@ footer.page-footer {
 {
   color:#E57373;
 }
+.topImage
+{
+  width: 100%;
+  position: absolute;
+  height: 500px;
+  left: -1%;
+}
+.hostelContent
+{
+  position: absolute;
+  top: 570px;
+  width: 100%;
+}
+.hostelSummary
+{
+  height: 320px;
+  color: dimgrey;
+}
+.hostelDetail
+{
+  color: dimgrey;
+  padding-bottom: 50px;
+  padding-top: 10px;
+  border-bottom: 1px solid #dce0e0;
+}
+.card-price
+{
+  background-color:#E57373 ;
+  height: 50px;
+  width: 100%;
+}
+.card-from
+{
+  height: 300px;
+}
+.card-calculator
+{
+  border-bottom: 1px solid #dce0e0;
+  padding-top: 25px;
+}
+.card-button
+{
+  margin: 30px auto;
+  width: 80%;
+  margin-left: 10%;
+}

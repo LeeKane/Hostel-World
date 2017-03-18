@@ -1,0 +1,165 @@
+#set($layout="userLayout.vm")
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+<link href="/HostelWorld/static/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+<main ng-app="hostelInfoApp" ng-controller="hostelInfoController">
+<div class="topImage">
+    <img src="/HostelWorld/static/images/hostelCover.jpg" style="width: 105%;height: 100%;">
+</div>
+<div class="hostelContent">
+    <div class="row container">
+        <div class="col s8">
+            <div class="hostelSummary">
+            <div class="caption-container-main">
+                <div class="caption-text-container">客栈综述</div>
+                <div class="caption-bg "></div>
+            </div>
+            <div class="col s3">
+                <i class="material-icons Large materialize-red-text text-lighten-2" style="padding-top: 40%;font-size: 8rem;">store</i>
+                </div>
+            <div class="col s9">
+                <h3 class="text-lighten-2 materialize-red-text">$!result.hostel.name</h3>
+                <p>$!result.hostel.city</p>
+                <div class="col s3">
+                    <div class="center promo promo-example">
+                        <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+                        <p class="promo-caption"> 可住多人</p>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="center promo promo-example">
+                        <i class="fa fa-bed fa-2x" aria-hidden="true"></i>
+                        <p class="promo-caption"> 一张床</p>
+                    </div>
+                </div>
+                <div class="col s3">
+
+                    <div class="center promo promo-example">
+                        <i class="fa fa-bath fa-2x" aria-hidden="true"></i>
+                        <p class="promo-caption"> 热水供应</p>
+                    </div>
+                </div>
+                <div class="col s3">
+
+                    <div class="center promo promo-example">
+                        <i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i>
+                        <p class="promo-caption"> 信用商家</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div>
+                <div class="caption-container-main">
+                    <div class="caption-text-container">客栈详情</div>
+                    <div class="caption-bg "></div>
+                </div>
+                <div class="hostelDetail">
+                    <div class="col s3">
+                        详细地址
+                    </div>
+                    <div class="col s9">
+                        <div class="col s12">
+                        $!result.hostel.address
+                            </div>
+                    </div>
+                </div>
+                <div class="hostelDetail">
+                    <div class="col s3">
+                        客栈简介
+                    </div>
+                    <div class="col s9">
+                        <div class="col s12">
+                        $!result.hostel.info
+                            </div>
+                    </div>
+                </div>
+                <div class="hostelDetail">
+                    <div class="col s3">
+                        房源
+                    </div>
+                    <div class="col s9">
+                        <div class="col s6">
+                        <div>剩余房数: <strong>$!result.hostel.roomNum</strong></div>
+                        <div>可住人数: <strong>2+</strong></div>
+                        </div>
+                        <div class="col s6">
+                            <div>入住时间: <strong>灵活</strong></div>
+                            <div>退房时间: <strong>12:00</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="caption-container-main">
+                <div class="caption-text-container">预定</div>
+                <div class="caption-bg "></div>
+            </div>
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image card-price">
+                        <span class="card-title" style="padding: 9px">¥ <span class="hostelPrice">$!result.hostel.price</span></span>
+                    </div>
+                    <div class="card-content card-from">
+                        <div class="input-field col s6">
+                            <input  placeholder="{{startData}}" id="dpd1" type="text" class="validate span2" ng-model="startData" required>
+                            <label class="active" for="dpd1">入住</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input  placeholder="{{overData}}" id="dpd2" type="text" class="validate span2" ng-model="overData" required>
+                            <label  class="active" for=dpd2>退房</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>1人</option>
+                                <option value="1">1人</option>
+                                <option value="2">2人</option>
+                                <option value="3">3人</option>
+                            </select>
+                            <label>入住人数</label>
+                        </div>
+                        <div class="col s12 card-calculator" style="padding-top: 10px">
+                            <span>¥ $!result.hostel.price  x  {{days}}晚</span>
+                            <span style="float: right">¥ <span class="materialize-red-text text-lighten-2">{{total()}}</span></span>
+                        </div>
+                        <div class="col s12">
+                          <button class="card-button waves-effect waves-light btn">预定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+<script src="/HostelWorld/static/js/hostelInfo.js"></script>
+<script src="/HostelWorld/static/js/foundation-datepicker.js"></script>
+<script src="/HostelWorld/static/js/foundation-datepicker.zh-CN.js"></script>
+<script>
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var checkin = $('#dpd1').fdatepicker({
+        onRender: function (date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function (ev) {
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate() + 1);
+            checkout.update(newDate);
+        }
+        checkin.hide();
+        $('#dpd2')[0].focus();
+    }).data('datepicker');
+    var checkout = $('#dpd2').fdatepicker({
+        onRender: function (date) {
+            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function (ev) {
+        checkout.hide();
+    }).data('datepicker');
+
+    $(document).ready(function() {
+        $('select').material_select();
+            Materialize.updateTextFields();
+    });
+</script>
+</main>

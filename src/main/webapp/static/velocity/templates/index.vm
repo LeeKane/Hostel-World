@@ -28,6 +28,7 @@
     </a>
   </div>
 </header>
+<div>
 <section id="proyectos" class="gradientManchas in">
     <div class="wpCont layer" data-depth="0.0">
         <div class="welcome">
@@ -84,8 +85,7 @@
     </div>
     <div class="splash layer" data-depth="0.10"><img src="/HostelWorld/static/images/splash-manifiesto.png"></div>
 </section>
-
-
+</div>
 <script src="/HostelWorld/static/js/parallax.js"></script>
 <script>
 $(document).ready(function(e) {

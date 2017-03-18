@@ -1,6 +1,7 @@
 package service;
 
 import bean.Hostel;
+import bean.SearchHostel;
 import bean.user;
 
 import java.text.ParseException;
@@ -19,4 +20,5 @@ public interface HostelService {
     public void addPlan(int hostelId,String startTime,String overTime,int roomNum,double price) throws ParseException;
     public List getPlans(int hostelId);
     public List getRequiredHostels(String city,String startData) throws ParseException;
+    public SearchHostel getRequiredHostelsById(int id);
 }

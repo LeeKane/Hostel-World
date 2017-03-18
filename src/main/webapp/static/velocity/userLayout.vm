@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>HostelWorld</title>
+    <link href="favicon.ico" type="image/x-icon" rel=icon>
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="icon" href="/HostelWorld/static/images/hwlogo.png" sizes="32x32">
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/HostelWorld/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/HostelWorld/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/HostelWorld/static/js/angular.js"></script>
+    <script src="/HostelWorld/static/js/materialize.js"></script>
+</head>
+<body>
+    #parse('head.vm')
+<main>
+    $screen_content
+</main>
+<!-- Scripts-->
+
+<script src="/HostelWorld/static/js/parallax.js"></script>
+<script>
+    $(document).ready(function(e) {
+        var scene3 = document.getElementById('top');
+        var parallax = new Parallax(scene3);
+    });
+</script>
+<script src="/HostelWorld/static/js/js.js"></script>
+</body>
+</html>

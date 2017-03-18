@@ -4,6 +4,7 @@ import bean.Application;
 import bean.Hostel;
 
 import bean.Plan;
+import bean.SearchHostel;
 import mapper.HostelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -87,6 +88,11 @@ public class HostelServiceImpl implements HostelService {
         System.out.println(hostels.get(0));
         return  hostels;
 
+    }
+
+    @Override
+    public SearchHostel getRequiredHostelsById(int id) {
+        return hostelMapper.getRequiredHostelById(id);
     }
 
 }

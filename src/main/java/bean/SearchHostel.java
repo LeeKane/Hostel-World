@@ -4,16 +4,25 @@ package bean;
  * Created by LeeKane on 17/3/17.
  */
 public class SearchHostel {
+    private String id;
     private String startData;
     private String overData;
     private String roomNum;
     private String price;
-    private String id;
+    private String hostelId;
     private String name;
     private String city;
     private  String address;
     private String info;
     private  String license;
+
+    public String getHostelId() {
+        return hostelId;
+    }
+
+    public void setHostelId(String hostelId) {
+        this.hostelId = hostelId;
+    }
 
     public String getStartData() {
         return startData;

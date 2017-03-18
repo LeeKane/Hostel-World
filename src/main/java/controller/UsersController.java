@@ -53,8 +53,10 @@ public class UsersController {
     public ModelAndView home(HttpServletRequest request,
                              HttpServletResponse response)throws Exception {
         int cardId=(int)request.getSession().getAttribute("cardId");
+        ModelMap result=new ModelMap();
         user user=userService.getUser(cardId);
-        return new ModelAndView("home", "user", user);
+        result.put("user",user);
+        return new ModelAndView("home", "result", result);
 
     }
     @RequestMapping(value = "/login")
