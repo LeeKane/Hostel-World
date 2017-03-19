@@ -9,6 +9,7 @@
         <ul class="right hide-on-med-and-down" id="user">
             <li ><a ng-class="{'active':active=='tab1'}"  ng-click="active='tab1'" class="waves-effect waves-red" style="display: -webkit-box;">发布计划</a></li>
             <li ><a  ng-class="{'active':active=='tab2'}"  ng-click="active='tab2'" class="waves-effect waves-red" style="display: -webkit-box;">入/离店登记</a></li>
+            <li ><a  ng-class="{'active':active=='tab3'}"  ng-click="active='tab3'" class="waves-effect waves-red" style="display: -webkit-box;">财务信息</a></li>
             <li><a  id="uname" href="javascript: void()"class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">store</i><label class="materialize-red-text text-lighten-2">$!hostel.name</label></a></li>
         </ul>
     </div>
@@ -66,6 +67,9 @@
 <div ng-show="active=='tab2'">
     <registration-panel hostel-id= $!hostel.id></registration-panel>
 </div>
+    <div ng-show="active=='tab3'">
+        <finance-panel hostel-id= $!hostel.id></finance-panel>
+    </div>
 
 </main>
 

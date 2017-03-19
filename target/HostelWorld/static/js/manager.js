@@ -73,6 +73,22 @@ app.directive("managerPanel", ['$http', function ($http) {
 
                 })
             }
+            $scope.settlement=function (checkout) {
+                var checkout=checkout;
+                $http({
+                    method: "POST",
+                    url: "/HostelWorld/settlement.do",
+                    data:{cost:checkout.cost,userId:checkout.userId,id:checkout.id}
+                }).success(function (data, status){
+                    Materialize.toast("结算成功!", 1000);
+                    $scope.business=data.business;
+                    $scope.books=data.books;
+                    $scope.checkins=data.checkins;
+                    $scope.checkouts=data.checkouts;
+                }).error(function(data, status){
+
+                })
+            }
 
         },
         template: '<div><div class="container" ng-show= active=="tab1"><p>tab1</p></div>'
@@ -96,7 +112,7 @@ app.directive("managerPanel", ['$http', function ($http) {
         '<ul class="collapsible badgecol" data-collapsible="accordion">'
         +'<li ng-repeat= "checkout in checkouts">'
         +'<div class="collapsible-header"><i  class="material-icons text-lighten-2 materialize-red-text">info_outline</i>{{checkout.hostelName}} ({{checkout.hostelId}})</div>'
-        +'<div class="collapsible-body"><p>客栈名: {{checkout.hostelName}}</p><p>会员名: {{checkout.userName}}</p><p>开始时间: {{checkout.startData}}</p><p>结束时间 {{checkout.overData}}</p><p>每天价格: ¥{{bus.price}}</p><p>总计房费: ¥{{bus.cost}}</p><button class="waves-effect waves-light btn">结算</button>'
+        +'<div class="collapsible-body"><p>客栈名: {{checkout.hostelName}}</p><p>会员名: {{checkout.userName}}</p><p>开始时间: {{checkout.startData}}</p><p>结束时间: {{checkout.overData}}</p><p>每天价格: ¥{{checkout.price}}</p><p>总计房费: ¥{{checkout.cost}}</p><button class="waves-effect waves-light btn"  ng-click="settlement(checkout)" style="margin: 15px; margin-left: 42%">结算</button>'
         +'</li>'
         +'</ul>'
         +'</div>'

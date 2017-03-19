@@ -2,6 +2,11 @@
 <link href="/HostelWorld/static/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
 <link href="/HostelWorld/static/css/cityPicker.css" rel="stylesheet">
 <main ng-app="homeApp" ng-controller="homeController">
+    <div id="info" style="display: none;">
+        <span id="userId">$!result.user.cardId</span>
+        <span id="userName">$!result.user.username</span>
+        <span id="activatied">$!result.card.activatied</span>
+    </div>
 <div ng-show="searchFor==false">
     <div class="section no-pad-bot">
         <section id="top">
@@ -30,7 +35,8 @@
                 <label for="dpd1" style="color: #E57373">入住时间</label></div>
             </div>
             <div class="card-content buttonfrom col s12 " style="padding: 10px">
-                <a ng-click="getRequiredHostel()" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">寻找客栈</a>
+                <a ng-show="activatied==1" ng-click="getRequiredHostel()" id="download-button" class="btn-large waves-effect waves-light materialize-red lighten-2">寻找客栈</a>
+                <a ng-show="activatied==0"  class="btn-large waves-effect waves-light materialize-red lighten-2">请先激活会员资格再搜索</a>
             </div>
             </div>
 

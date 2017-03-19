@@ -57,7 +57,9 @@ public class UsersController {
         int cardId=(int)request.getSession().getAttribute("cardId");
         ModelMap result=new ModelMap();
         user user=userService.getUser(cardId);
+        Card card=cardService.getCard(cardId);
         result.put("user",user);
+        result.put("card",card);
         return new ModelAndView("home", "result", result);
 
     }

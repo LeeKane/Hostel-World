@@ -15,5 +15,7 @@ public interface userService {
     public void inserUser(String password ,String username);
     public void modifyName(String username,int cardId);
     public List<business> getBusiness(int userId);
+    public void bookMoney(double cost,int cardId);
+    public void settlement(double cost,int cardId,int id);
 }
 

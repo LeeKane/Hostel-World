@@ -297,6 +297,67 @@ app.directive('registrationPanel',function ($http) {
     };
     return obj;
 })
+
+app.directive('financePanel',function ($http) {
+    var obj={
+        restrict:'AE',
+        scope:
+        {
+            hostelId:'@hostelId'
+        },
+        repalce:true,
+        link: function($scope)
+        {
+            $http({
+                method: "POST",
+                url: "/HostelWorld/getHostelUserStatistic.do",
+                data: {hostelId:$scope.hostelId},
+            }).success(function (data, status) {
+                $scope.business=data.business;
+                $scope.books=data.books;
+                $scope.checkins=data.checkins;
+                $scope.checkouts=data.checkouts;
+                $scope.checkovers=data.checkovers;
+
+                for(var i=0;i<$scope.checkovers.length;i++)
+                {
+                    $scope.totalIncome+=$scope.checkovers[i]["cost"];
+                }
+            }).error(function (data, status) {
+
+            })
+        },
+        controller:function($scope,$rootScope,$http)
+        {
+            $scope.totalIncome=0;
+        },
+        template:
+        '<div class="row container">'
+        +'<div class="col s8">'
+        +'<div class="caption-container-main">'
+        +'<div class="caption-text-container">收入</div>'
+        +'<div class="caption-bg "></div>'
+        +'</div>'
+        +'<div class="container"><ul class="collapsible badgecol" data-collapsible="accordion">'
+        +'<li ng-repeat= "bus in checkovers">'
+        +'<div class="collapsible-header"><i class="material-icons text-lighten-2 materialize-red-text">done</i>{{bus.userName}} ({{bus.userId}}) <span style="float: right" class="materialize-red-text text-lighten-2">¥{{bus.cost}} </span></div>'
+        +'<div class="collapsible-body"><p>预定单号: {{bus.id}}</p><p>会员账号: {{bus.userName}}</p><p>会员卡号:{{bus.userId}}</p><p>开始时间: {{bus.startData}}</p><p>结束时间: {{bus.overData}}</p><p>每天价格: ¥{{bus.price}}</p><p>总计房费: ¥{{bus.cost}}</p></div>'
+        +'</li>'
+        +'</ul>'
+        +'<div class="materialize-red-text text-lighten-2" style="float: right">总计: ¥{{totalIncome}}</div>'
+        +'</div>'
+        +'</div>'
+        +'<div class="col s4">'
+        +'<div class="caption-container-main">'
+        +'<div class="caption-text-container">支出</div>'
+        +'<div class="caption-bg "></div>'
+        +'</div>'
+        +'</div></div>'
+
+    };
+    return obj;
+})
+
 app.filter("book",function(){
     return function(input){
         var out = [];

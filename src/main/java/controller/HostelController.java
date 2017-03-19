@@ -177,6 +177,8 @@ public class HostelController {
         double price = Double.parseDouble(priceStr);
         hostelService.addBookBusniess(userId,userName,hostelId,hostelName,startData,overData,price,cost);
         Map<String, Object> result = new HashMap<String, Object>();
+        double costm=cost;
+        userService.bookMoney(costm,userId);
         return result;
     }
 
@@ -190,11 +192,13 @@ public class HostelController {
         List<business> books=getBook(business);
         List<business> checkins=getCheckin(business);
         List<business> checkouts=getCheckout(business);
+        List<business> checkovers=getCheckover(business);
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("business",business);
         result.put("books",books);
         result.put("checkins",checkins);
         result.put("checkouts",checkouts);
+        result.put("checkovers",checkovers);
         return result;
     }
 
@@ -253,6 +257,24 @@ public class HostelController {
         result.put("checkouts",checkouts);
         return result;
     }
+    @ResponseBody
+    @RequestMapping(value = "/settlement.do")
+    public Map settlement(@RequestBody Map<String, Object> map) {
+        int cost =(int) map.get("cost");
+        int userId= (int) map.get("userId");
+        int id= (int) map.get("id");
+        userService.settlement(cost,userId,id);
+        Map<String, Object> result = new HashMap<String, Object>();
+        List<business> business=hostelService.getAllBusiness();
+        List<business> books=getBook(business);
+        List<business> checkins=getCheckin(business);
+        List<business> checkouts=getCheckout(business);
+        result.put("business",business);
+        result.put("books",books);
+        result.put("checkins",checkins);
+        result.put("checkouts",checkouts);
+        return result;
+    }
 
     public List<business> getBook(List<business> business)
     {
@@ -280,6 +302,17 @@ public class HostelController {
         for(int i=0;i<business.size();i++)
         {
             if(business.get(i).getCheckout()==1)
+                result.add(business.get(i));
+        }
+        return result;
+    }
+    public List<business> getCheckover(List<business> business)
+    {
+        List result=new ArrayList<>();
+        for(int i=0;i<business.size();i++)
+        {
+            business b=business.get(i);
+            if(b.getCheckout()==0&&b.getCheckin()==0&&b.getBook()==0)
                 result.add(business.get(i));
         }
         return result;

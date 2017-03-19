@@ -3,6 +3,7 @@ package service.impl;
 import bean.business;
 import bean.user;
 
+import mapper.HostelMapper;
 import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.userService;
@@ -19,7 +20,8 @@ import java.util.List;
 public class userServiceImpl implements userService {
     @Autowired
     private UserMapper userMapper;
-
+    @Autowired
+    private HostelMapper hostelMapper;
 
     @Override
     public List<user> getAlluser() {
@@ -61,6 +63,17 @@ public class userServiceImpl implements userService {
     @Override
     public List<business> getBusiness(int userId) {
         return userMapper.getBusiness(userId);
+    }
+
+    @Override
+    public void bookMoney(double cost, int cardId) {
+        userMapper.bookMoney(cost,cardId);
+    }
+
+    @Override
+    public void settlement(double cost, int cardId,int id) {
+        userMapper.settlement(cost,cardId);
+        hostelMapper.checkover(id);
     }
 
 //    @Scheduled(fixedDelay = 30*1000)

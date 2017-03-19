@@ -45,6 +45,8 @@ public interface HostelMapper {
     void checkin(@Param("busId")int busId);
     @Update("update business set checkin=0,checkout=1 where  id = #{busId}")
     void checkout(@Param("busId")int busId);
+    @Update("update business set checkout=0 where  id = #{busId}")
+    void checkover(@Param("busId")int busId);
     @Select("SELECT * FROM business ")
     List<business> getAllBusiness();
 }
