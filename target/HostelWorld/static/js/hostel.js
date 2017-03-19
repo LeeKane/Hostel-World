@@ -344,7 +344,7 @@ app.directive('financePanel',function ($http) {
         +'<div class="collapsible-body"><p>预定单号: {{bus.id}}</p><p>会员账号: {{bus.userName}}</p><p>会员卡号:{{bus.userId}}</p><p>开始时间: {{bus.startData}}</p><p>结束时间: {{bus.overData}}</p><p>每天价格: ¥{{bus.price}}</p><p>总计房费: ¥{{bus.cost}}</p></div>'
         +'</li>'
         +'</ul>'
-        +'<div class="materialize-red-text text-lighten-2" style="float: right">总计: ¥{{totalIncome}}</div>'
+        +'<div class="materialize-red-text text-lighten-2" style="float: right; margin-right: 8px;">总计: ¥{{totalIncome}}</div>'
         +'</div>'
         +'</div>'
         +'<div class="col s4">'

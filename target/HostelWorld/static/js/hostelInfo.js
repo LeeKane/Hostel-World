@@ -5,6 +5,8 @@ var app= angular.module('hostelInfoApp',[]);
 app.controller('hostelInfoController',function ($scope,$http) {
     var priceElement=angular.element('.hostelPrice')[0];
     $scope.price=0+priceElement.innerText;
+    var levelElement=angular.element('#level')[0];
+    $scope.level=0+levelElement.innerText;
     $scope.days=7;
     var  startDate  =  new  Date  ();
     var  intValue  =  0;
@@ -23,6 +25,19 @@ app.controller('hostelInfoController',function ($scope,$http) {
         oDate2  =  new  Date(over[0]  +  '-'  +  over[1]  +  '-'  +  over[2]);
         $scope.days  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)  ;
         $scope.cost=$scope.days* $scope.price;
+        if($scope.level==1)
+        {
+            $scope.cost=$scope.cost*0.9;
+        }
+        if($scope.level==2)
+        {
+            $scope.cost=$scope.cost*0.8;
+        }
+        if($scope.level==3)
+        {
+            $scope.cost=$scope.cost*0.7;
+        }
+        $scope.cost=Math.round($scope.cost*100)/100
         return $scope.cost;
     }
     $scope.addBook=function () {

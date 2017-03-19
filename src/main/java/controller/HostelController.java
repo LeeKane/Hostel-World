@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import service.CardService;
 import service.HostelService;
 import service.userService;
 
@@ -28,6 +29,8 @@ public class HostelController {
     private HostelService hostelService;
     @Autowired
     private service.userService userService;
+    @Autowired
+    private CardService cardService;
 
     @RequestMapping(value = "/hostelLogin")
     public String hostelLogin() {
@@ -153,7 +156,9 @@ public class HostelController {
         HttpSession session=request.getSession();
         int userId= (int) session.getAttribute("cardId");
         user user=userService.getUser(userId);
+        Card card=cardService.getCard(userId);
         result.put("user",user);
+        result.put("card",card);
         SearchHostel hostel=hostelService.getRequiredHostelsById(Integer.parseInt(id));
         result.put("hostel",hostel);
         return new ModelAndView("hostelInfo", "result", result);

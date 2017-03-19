@@ -1,8 +1,10 @@
 package service.impl;
 
+import bean.Card;
 import bean.business;
 import bean.user;
 
+import mapper.CardMapper;
 import mapper.HostelMapper;
 import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class userServiceImpl implements userService {
     private UserMapper userMapper;
     @Autowired
     private HostelMapper hostelMapper;
+    @Autowired
+    private CardMapper cardMapper;
 
     @Override
     public List<user> getAlluser() {
@@ -74,6 +78,21 @@ public class userServiceImpl implements userService {
     public void settlement(double cost, int cardId,int id) {
         userMapper.settlement(cost,cardId);
         hostelMapper.checkover(id);
+        cardMapper.setScore(cost,cardId);
+        Card card=cardMapper.getCard(cardId);
+        int level=setLevel(card.getConsumption());
+        cardMapper.changeLevel(level,cardId);
+    }
+
+
+    public int setLevel(double cost)
+    {
+        if(cost>3000&&cost<6000)
+            return 1;
+        if(cost>5999&&cost<9000)
+            return 2;
+        else
+            return 3;
     }
 
 //    @Scheduled(fixedDelay = 30*1000)

@@ -16,3 +16,25 @@ $(document).ready(function(){
         $("a#vipbtn").addClass("btn-hidden");
     });
 });
+
+$(document).ready(function(){
+    $("div#level").hover(function(){
+        $("a#levelbtn").removeClass("btn-hidden");
+    },function(){
+        $("a#levelbtn").addClass("btn-hidden");
+    });
+});
+$(document).ready(function(){
+    $("div#balance").hover(function(){
+        $("a#balancebtn").removeClass("btn-hidden");
+    },function(){
+        $("a#balancebtn").addClass("btn-hidden");
+    });
+});
+$(document).ready(function(){
+    $("div#score").hover(function(){
+        $("a#scorebtn").removeClass("btn-hidden");
+    },function(){
+        $("a#scorebtn").addClass("btn-hidden");
+    });
+});

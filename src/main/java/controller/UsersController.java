@@ -81,6 +81,20 @@ public class UsersController {
         cardService.cardActivited(card.getCardId());
         cardService.income(income,card.getCardId());
     }
+    @RequestMapping(value = "/charge.do")
+    public void charge(@RequestBody Map<String, Object> map,HttpServletRequest request,
+                           HttpServletResponse response)throws Exception {
+        double charge=Double.parseDouble(map.get("charge").toString());
+        Card card = cardService.getCard((Integer) request.getSession().getAttribute("cardId"));
+        cardService.charge(charge,card.getCardId());
+    }
+    @RequestMapping(value = "/change.do")
+    public void change(@RequestBody Map<String, Object> map,HttpServletRequest request,
+                       HttpServletResponse response)throws Exception {
+        double socerC=Double.parseDouble(map.get("socerC").toString());
+        Card card = cardService.getCard((Integer) request.getSession().getAttribute("cardId"));
+        cardService.change(socerC,card.getCardId());
+    }
     @RequestMapping(value = "/vip")
     public ModelAndView vip(HttpServletRequest request,
                             HttpServletResponse response)throws Exception {

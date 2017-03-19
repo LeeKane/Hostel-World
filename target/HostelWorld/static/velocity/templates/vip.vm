@@ -146,17 +146,32 @@
                                         </div>
                                     </div>
                                     </form>
-                                    <form class="Field"><strong class="Field-label">会员等级 :</strong><div class="Field-content">
+                                    <form class="Field"><strong class="Field-label">会员等级 :</strong>
+                                        <div id="level"class="Field-content" style="display: flex;">
                                         <div>
                                             <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.level </span> 级
                                         </div>
+                                        <a  id="levelbtn" class="btn tooltipped btn-hidden" data-position="right" data-delay="50" data-tooltip="每消费3000元提升1级">详情</a>
                                     </div>
                                     </form>
-                                    <form class="Field"><strong class="Field-label">会员卡余额 :</strong><div class="Field-content">
+                                    <form class="Field"><strong class="Field-label">会员卡余额 :</strong>
+                                        <div ng-show="balanceModify=='normal'" id="balance" class="Field-content" style="display: flex;">
                                         <div>
                                             <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.balance </span> 元
                                         </div>
-                                    </div>
+                                            <a  id="balancebtn" ng-click="balanceModify='modify'"  class="waves-effect waves-light btn btn-modify btn-hidden">
+                                                充值
+                                            </a>
+                                       </div>
+                                        <div ng-show="balanceModify=='modify'" class="Field-content">
+                                        <input placeholder="1000"  ng-model="charge" name="income" ng-minlength="4" required type="number" class="validate">
+                                        <span class="materialize-red-text text-lighten-2" ng-show="incomeFrom.income.$error.required || incomeFrom.income.$invalid">一次充值满1000元可激活</span>
+                                        <div>
+                                            <a  ng-click="chargeM()"  class="waves-effect waves-light btn btn-modify">
+                                                充值
+                                            </a>
+                                        </div>
+                                        </div>
                                     </form>
                                     <form class="Field"><strong class="Field-label">总计消费 :</strong><div class="Field-content">
                                         <div>
@@ -164,11 +179,24 @@
                                         </div>
                                     </div>
                                     </form>
-                                    <form class="Field"><strong class="Field-label">会员积分 :</strong><div class="Field-content">
+                                    <form name="scoreForm" class="Field"><strong class="Field-label">会员积分 :</strong>
+                                        <div ng-show="scoreModify=='normal'" class="Field-content" id="score" class="Field-content" style="display: flex;">
                                         <div>
                                             <span class="vcard-stat-count d-block materialize-red-text text-lighten-2">$!result.card.scocer </span> 分
                                         </div>
-                                    </div>
+                                            <a  id="scorebtn" ng-click="scoreModify='modify'"  class="waves-effect waves-light btn btn-modify btn-hidden">
+                                                兑换
+                                            </a>
+                                        </div>
+                                        <div ng-show="scoreModify=='modify'" class="Field-content">
+                                            <input type="number" placeholder= 1000  ng-model="socerC" name="socerC"    class="validate" max= $!result.card.scocer required>
+                                            <span class="materialize-red-text text-lighten-2" >100积分可兑换1元</span>
+                                            <div>
+                                                <a  ng-show="scoreForm.socerC.$valid "  ng-click="change()"  class="waves-effect waves-light btn btn-modify">
+                                                    兑换
+                                                </a>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                                 <div ng-show="active=='info'" class="col s12">

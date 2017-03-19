@@ -1,4 +1,5 @@
 #set($layout="noLayout.vm")
+<script src="//cdn.bootcss.com/echarts/3.4.0/echarts.common.min.js"></script>
 <main ng-app="managerApp" ng-controller="managerController">
 <header>
     <nav class="white" role="navigation">

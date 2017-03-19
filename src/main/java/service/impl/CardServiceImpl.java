@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import service.CardService;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by LeeKane on 17/2/20.
@@ -41,6 +42,36 @@ public class CardServiceImpl implements CardService {
     public void cancel(int cardId) {
         cardMapper.cancel(cardId);
         userMapper.deleteUser(cardId);
+    }
+
+    @Override
+    public void charge(double charge, int cardId) {
+        cardMapper.charge(charge,cardId);
+    }
+
+    @Override
+    public void change(double socerC, int cardId) {
+        double charge=socerC/100;
+        cardMapper.charge(charge,cardId);
+        cardMapper.changeScore(socerC,cardId);
+    }
+
+    @Override
+    public void checkData() {
+        List<Card> cards=cardMapper.getAllCard();
+        Calendar calendar = Calendar.getInstance();
+        java.sql.Date nowDate = new java.sql.Date(calendar.getTime().getTime());
+        for(int i=0;i<cards.size();i++)
+        {
+            if(cards.get(i).getActivatiedOverDate().before(nowDate))
+            {
+                    cardMapper.cardActivitiedCancel(cards.get(i).getCardId());
+            }
+            else if(cards.get(i).getStopDate().before(nowDate))
+            {
+                cardMapper.cancel(cards.get(i).getCardId());
+            }
+        }
     }
 
 }

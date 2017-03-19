@@ -10,4 +10,7 @@ public interface CardService {
     public void cardActivited(int cardId);
     public void income(double income,int cardId);
     public void cancel(int cardId);
+    public void charge(double charge,int cardId);
+    public void change(double socerC,int cardId);
+    public void checkData();
 }

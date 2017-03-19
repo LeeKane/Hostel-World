@@ -7,6 +7,8 @@ var app=angular.module("vipApp",[])
     $scope.nameModify='normal';
     $scope.modifyActi='normal';
     $scope.cancelVip='normal';
+    $scope.balanceModify='normal';
+        $scope.scoreModify='normal';
         var userIdElement=angular.element('#cardId')[0];
         $scope.userId=userIdElement.innerText;
     $scope.modifyName=function () {
@@ -40,6 +42,30 @@ var app=angular.module("vipApp",[])
             Materialize.toast('需要充值1000元以上来激活!', 6000);
         }
     }
+        $scope.change=function () {
+            $http({
+                method: "POST",
+                url: "/HostelWorld/change.do",
+                data: {socerC: $scope.socerC},
+            }).success(function (data, status) {
+                Materialize.toast('兑换成功!', 6000);
+                window.location.href = "vip";
+            }).error(function (data, status) {
+                Materialize.toast('兑换失败!', 6000);
+            })
+        }
+        $scope.chargeM=function () {
+            $http({
+                method: "POST",
+                url: "/HostelWorld/charge.do",
+                data: {charge: $scope.charge},
+            }).success(function (data, status) {
+                Materialize.toast('充值成功!', 6000);
+                window.location.href = "vip";
+            }).error(function (data, status) {
+                Materialize.toast('充值失败!', 6000);
+            })
+        }
     $scope.cancel=function () {
         $http({
             method: "POST",

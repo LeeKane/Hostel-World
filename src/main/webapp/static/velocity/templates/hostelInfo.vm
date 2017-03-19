@@ -7,6 +7,7 @@
         <span id="hostelName">$!result.hostel.name</span>
         <span id="userId">$!result.user.cardId</span>
         <span id="userName">$!result.user.username</span>
+        <span id="level">$!result.card.level</span>
     </div>
 <div class="topImage">
     <img src="/HostelWorld/static/images/hostelCover.jpg" style="width: 105%;height: 100%;">
@@ -128,6 +129,9 @@
                             <span style="float: right">¥ <span class="materialize-red-text text-lighten-2">{{total()}}</span></span>
                         </div>
                         <div class="col s12">
+                            <span ng-show="level==1" class="materialize-red-text text-lighten-2">1级会员9折优惠</span>
+                            <span ng-show="level==2" class="materialize-red-text text-lighten-2">2级会员8折优惠</span>
+                            <span ng-show="level==3" class="materialize-red-text text-lighten-2">3级会员7折优惠</span>
                           <button ng-click="addBook()" class="card-button waves-effect waves-light btn">预定</button>
                         </div>
                     </div>

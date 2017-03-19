@@ -17,5 +17,6 @@ public interface userService {
     public List<business> getBusiness(int userId);
     public void bookMoney(double cost,int cardId);
     public void settlement(double cost,int cardId,int id);
+
 }
 
