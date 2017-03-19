@@ -5,11 +5,11 @@
 <main ng-app="hostelApp" ng-controller="hostelMainController">
 <nav class="white" role="navigation">
     <div class="nav-wrapper header-container">
-        <a id="logo-container" href="/HostelWorld/home" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+        <a id="logo-container" href="/HostelWorld/overview" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
         <ul class="right hide-on-med-and-down" id="user">
             <li ><a ng-class="{'active':active=='tab1'}"  ng-click="active='tab1'" class="waves-effect waves-red" style="display: -webkit-box;">发布计划</a></li>
             <li ><a  ng-class="{'active':active=='tab2'}"  ng-click="active='tab2'" class="waves-effect waves-red" style="display: -webkit-box;">入/离店登记</a></li>
-            <li><a  id="uname" href="/HostelWorld/vip"class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">store</i><label class="materialize-red-text text-lighten-2">$!hostel.name</label></a></li>
+            <li><a  id="uname" href="javascript: void()"class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">store</i><label class="materialize-red-text text-lighten-2">$!hostel.name</label></a></li>
         </ul>
     </div>
 </nav>
@@ -62,6 +62,9 @@
 </div>
 <div ng-show="active=='tab1'">
     <plane-panel hostel-id= $!hostel.id></plane-panel>
+</div>
+<div ng-show="active=='tab2'">
+    <registration-panel hostel-id= $!hostel.id></registration-panel>
 </div>
 
 </main>

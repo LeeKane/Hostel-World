@@ -16,7 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor  {
         if(user!=null) {
             return true;
         }
-        response.sendRedirect("/HostelWorld/login");
+        response.sendRedirect("/HostelWorld/overview");
         return false;
     }
     //拦截后处理

@@ -2,7 +2,7 @@
  * Created by LeeKane on 17/3/18.
  */
 var app= angular.module('hostelInfoApp',[]);
-app.controller('hostelInfoController',function ($scope) {
+app.controller('hostelInfoController',function ($scope,$http) {
     var priceElement=angular.element('.hostelPrice')[0];
     $scope.price=0+priceElement.innerText;
     $scope.days=7;
@@ -22,6 +22,26 @@ app.controller('hostelInfoController',function ($scope) {
         var over=$scope.overData.split("/");
         oDate2  =  new  Date(over[0]  +  '-'  +  over[1]  +  '-'  +  over[2]);
         $scope.days  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)  ;
-        return $scope.days* $scope.price;
+        $scope.cost=$scope.days* $scope.price;
+        return $scope.cost;
+    }
+    $scope.addBook=function () {
+        var hostelIdElement=angular.element('#hostelId')[0];
+        $scope.hostelId=hostelIdElement.innerText;
+        var hostelNameElement=angular.element('#hostelName')[0];
+        $scope.hostelName=hostelNameElement.innerText;
+        var userIdElement=angular.element('#userId')[0];
+        $scope.userId=userIdElement.innerText;
+        var userNameElement=angular.element('#userName')[0];
+        $scope.userName=userNameElement.innerText;
+        $http({
+            method: "POST",
+            url: "/HostelWorld/addBookBusniess.do",
+            data: {userId:$scope.userId,userName:$scope.userName,hostelId:$scope.hostelId,hostelName:$scope.hostelName,startData:$scope.startData,overData:$scope.overData,price:$scope.price,cost:$scope.cost}
+        }).success(function (data, status){
+            Materialize.toast('预定成功!您可以在您的预定中查看预定信息', 6000);
+        }).error(function(data, status){
+
+        })
     }
 });

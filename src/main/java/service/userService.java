@@ -1,5 +1,6 @@
 package service;
 
+import bean.business;
 import bean.user;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public interface userService {
     public user getUserByName(String username);
     public void inserUser(String password ,String username);
     public void modifyName(String username,int cardId);
+    public List<business> getBusiness(int userId);
 }
 

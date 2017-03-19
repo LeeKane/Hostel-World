@@ -260,3 +260,31 @@ footer.page-footer {
   width: 80%;
   margin-left: 10%;
 }
+.plan-text-container
+{
+ left: 42%;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  font-size: 18px;
+  color: #444;
+  background-color: #fff;
+  display: inline-block;
+}
+.plan-caption-bg
+{
+  bottom: 6px;
+  height: 5px;
+  position: absolute;
+  width: 100%;
+  border-bottom: 2px solid #E57373;
+}
+.plan-Filed
+{
+  text-align: center;
+  padding: 10px 0;
+  /* border-top: 1px solid #ebeef5; */
+  border-bottom: 1px solid #ebeef5;
+}

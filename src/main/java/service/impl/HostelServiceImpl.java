@@ -1,10 +1,7 @@
 package service.impl;
 
-import bean.Application;
-import bean.Hostel;
+import bean.*;
 
-import bean.Plan;
-import bean.SearchHostel;
 import mapper.HostelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -94,5 +91,44 @@ public class HostelServiceImpl implements HostelService {
     public SearchHostel getRequiredHostelsById(int id) {
         return hostelMapper.getRequiredHostelById(id);
     }
+
+    @Override
+    public void addBookBusniess(int userId, String userName, int hostelId, String hostelName, String startData, String overData, double price, double cost) throws ParseException {
+        Date start = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        start = sdf.parse(startData);
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        startData = sdf2.format(start);
+        Date over = new Date();
+        over= sdf.parse(overData);
+        overData=sdf2.format(over);
+        hostelMapper.addBookBusniess(userId,userName,hostelId,hostelName,startData,overData,price,cost);
+    }
+
+    @Override
+    public List<business> getBusiness(int hosteId) {
+        return hostelMapper.getBusiness(hosteId);
+    }
+
+    @Override
+    public List<business> getBusinessById(int busId) {
+        return hostelMapper.getBusinessById(busId);
+    }
+
+    @Override
+    public void checkin(int busId) {
+        hostelMapper.checkin(busId);
+    }
+
+    @Override
+    public void checkout(int busId) {
+        hostelMapper.checkout(busId);
+    }
+
+    @Override
+    public List<business> getAllBusiness() {
+        return hostelMapper.getAllBusiness();
+    }
+
 
 }

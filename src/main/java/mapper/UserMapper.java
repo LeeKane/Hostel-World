@@ -1,5 +1,6 @@
 package mapper;
 
+import bean.business;
 import bean.user;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.annotations.Select;
@@ -23,4 +24,8 @@ public interface UserMapper {
     void updateUsername(@Param("username")String username,@Param("cardId")int cardId);
     @Delete("delete from user where cardId = #{cardId}")
     void deleteUser(int cardId);
+    @Select("SELECT * FROM business WHERE userId = #{userId}")
+    List<business> getBusiness(@Param("userId")int userId);
+    @Delete("delete from business where id = #{busId}")
+    void deleteBusiness(@Param("busId") int busId);
 }

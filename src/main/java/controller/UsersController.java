@@ -5,6 +5,7 @@ package controller;
  */
 import bean.Card;
 import bean.SignUp;
+import bean.business;
 import bean.user;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.commons.lang.StringUtils;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -165,6 +167,25 @@ public class UsersController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/getUserStatistic.do")
+    public Map getUserStatistic(@RequestBody Map<String, Object> map) {
+        String userIdStr= (String) map.get("userId");
+        int userId=Integer.parseInt(userIdStr);
+        System.out.println(userId);
+        List<business> business=userService.getBusiness(userId);
+        Map<String, Object> result = new HashMap<String, Object>();
+        List<business> books=getBook(business);
+        List<business> checkins=getCheckin(business);
+        List<business> checkouts=getCheckout(business);
+        result.put("business",business);
+        result.put("books",books);
+        result.put("checkins",checkins);
+        result.put("checkouts",checkouts);
+        return result;
+    }
+
+
     @RequestMapping(value = "/cancel")
     public void cancel(HttpServletRequest request,
                            HttpServletResponse response)throws Exception {
@@ -173,6 +194,37 @@ public class UsersController {
         HttpSession session=request.getSession();
         session.removeAttribute("cardId");
         cardService.cancel(cardId);
+    }
+
+    public List<business> getBook(List<business> business)
+    {
+        List result=new ArrayList<>();
+        for(int i=0;i<business.size();i++)
+        {
+            if(business.get(i).getBook()==1)
+                result.add(business.get(i));
+        }
+        return result;
+    }
+    public List<business> getCheckin(List<business> business)
+    {
+        List result=new ArrayList<>();
+        for(int i=0;i<business.size();i++)
+        {
+            if(business.get(i).getCheckin()==1)
+                result.add(business.get(i));
+        }
+        return result;
+    }
+    public List<business> getCheckout(List<business> business)
+    {
+        List result=new ArrayList<>();
+        for(int i=0;i<business.size();i++)
+        {
+            if(business.get(i).getCheckout()==1)
+                result.add(business.get(i));
+        }
+        return result;
     }
 
 }

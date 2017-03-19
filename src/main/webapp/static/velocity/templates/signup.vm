@@ -3,7 +3,7 @@
 <header>
     <nav class="white" role="navigation">
         <div class="nav-wrapper header-container">
-            <a id="logo-container" href="#" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+            <a id="logo-container" href="/HostelWorld/overview" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
         </div>
     </nav>
 </header>

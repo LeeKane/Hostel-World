@@ -6,7 +6,7 @@
             <a id="logo-container" href="#" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
         </div>
         <div  ng-show="login==true" class="nav-wrapper header-container">
-            <a id="logo-container" href="/HostelWorld/home" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+            <a id="logo-container" href="/HostelWorld/overview" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
             <ul class="right hide-on-med-and-down" id="user">
                 <li ><a ng-class="{'active':active=='tab1'}" id="uname" ng-click="active='tab1'" class="waves-effect waves-red" style="display: -webkit-box;">统计</a></li>
                 <li ><a  ng-class="{'active':active=='tab2'}" id="uname" ng-click="active='tab2'" class="waves-effect waves-red" style="display: -webkit-box;">审批</a></li>

@@ -35,5 +35,17 @@ public interface HostelMapper {
     List<SearchHostel> getRequiredHostel(@Param("city") String city, @Param("startData") String startData);
     @Select("SELECT plan.id,startData,overData,roomNum,price,hostel.id as hostelId,name,city,address,info,license FROM plan,hostel where plan.id=#{id} and hostel.id=plan.hostelId")
     SearchHostel getRequiredHostelById(@Param("id") int id);
+    @Insert("INSERT INTO business (userId,userName,hostelId,hostelName,startData,overData,price,cost,book,checkin,checkout) values (#{userId},#{userName},#{hostelId},#{hostelName},#{startData},#{overData},#{price},#{cost},1,0,0)")
+    void addBookBusniess(@Param("userId") int userId,@Param("userName") String userName,@Param("hostelId")  int hostelId,@Param("hostelName") String hostelName,@Param("startData") String startData,@Param("overData") String overData,@Param("price") double price,@Param("cost") double cost);
+    @Select("SELECT * FROM business WHERE hostelId = #{hostelId}")
+    List<business> getBusiness(@Param("hostelId")int hostelId);
+    @Select("SELECT * FROM business WHERE id = #{busId}")
+    List<business> getBusinessById(@Param("busId")int busId);
+    @Update("update business set checkin=1,book=0 where  id = #{busId}")
+    void checkin(@Param("busId")int busId);
+    @Update("update business set checkin=0,checkout=1 where  id = #{busId}")
+    void checkout(@Param("busId")int busId);
+    @Select("SELECT * FROM business ")
+    List<business> getAllBusiness();
 }
 

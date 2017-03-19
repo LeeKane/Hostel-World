@@ -1,7 +1,7 @@
 <header>
 <nav class="white" role="navigation">
     <div class="nav-wrapper header-container">
-        <a id="logo-container" href="/HostelWorld/home" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
+        <a id="logo-container" href="/HostelWorld/overview" class="brand-logo"><img src="/HostelWorld/static/images/hwlogo.png"/></a>
         <ul class="right hide-on-med-and-down" id="user">
             <li><a  id="uname" href="/HostelWorld/vip"class="waves-effect waves-red" style="display: -webkit-box;"><i class="material-icons">perm_identity</i><label class="materialize-red-text text-lighten-2">$!result.user.username</label></a></li>
         </ul>

@@ -1,5 +1,6 @@
 package service.impl;
 
+import bean.business;
 import bean.user;
 
 import mapper.UserMapper;
@@ -55,6 +56,11 @@ public class userServiceImpl implements userService {
     @Override
     public void modifyName(String username, int cardId) {
         userMapper.updateUsername(username,cardId);
+    }
+
+    @Override
+    public List<business> getBusiness(int userId) {
+        return userMapper.getBusiness(userId);
     }
 
 //    @Scheduled(fixedDelay = 30*1000)

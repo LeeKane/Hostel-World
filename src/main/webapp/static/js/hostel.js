@@ -120,3 +120,191 @@ app.directive('planePanel',function ($http) {
     };
     return obj;
 })
+
+app.directive('registrationPanel',function ($http) {
+    var obj={
+        restrict:'AE',
+        scope:
+        {
+            hostelId:'@hostelId'
+        },
+        repalce:true,
+        link: function($scope)
+        {
+            $http({
+                method: "POST",
+                url: "/HostelWorld/getHostelUserStatistic.do",
+                data: {hostelId:$scope.hostelId},
+            }).success(function (data, status) {
+                $scope.business=data.business;
+                $scope.books=data.books;
+                $scope.checkins=data.checkins;
+                $scope.checkouts=data.checkouts;
+            }).error(function (data, status) {
+
+            })
+
+        },
+        controller:function($scope,$rootScope,$http)
+        {
+            $scope.Ractive='checkin';
+            $scope.checkin=function () {
+                $http({
+                    method: "POST",
+                    url: "/HostelWorld/checkin.do",
+                    data: {busId:$scope.busId,hostelId:$scope.hostelId},
+                }).success(function (data, status) {
+                    $scope.business=data.business;
+                    $scope.books=data.books;
+                    $scope.checkins=data.checkins;
+                    $scope.checkouts=data.checkouts;
+                    Materialize.toast('登记成功!', 3000);
+                }).error(function (data, status) {
+
+                })
+            }
+            $scope.checkout=function () {
+                $http({
+                    method: "POST",
+                    url: "/HostelWorld/checkout.do",
+                    data: {busId:$scope.busId,hostelId:$scope.hostelId},
+                }).success(function (data, status) {
+                    $scope.business=data.business;
+                    $scope.books=data.books;
+                    $scope.checkins=data.checkins;
+                    $scope.checkouts=data.checkouts;
+                    Materialize.toast('登记成功!', 3000);
+                }).error(function (data, status) {
+
+                })
+            }
+        },
+        template:
+        '<div class="row container">'
+        +'<div class="col s8">'
+        +'<div class="col s12">'
+        +'<div class="caption-container-main">'
+        +'<div class="caption-text-container">登记</div>'
+        +'<div class="caption-bg "></div>'
+        +'</div><div style="margin-top: 25px">  '
+        +'<ul class="tabs" >'
+        +'<li class="tab col s6 m2" ><a ng-click= Ractive="checkin" class="active">入店登记</a></li>'
+        +'<li class="tab col s6 m2" ><a ng-click= Ractive="checkout" >离店登记</a></li>'
+        +'</ul>'
+        +'</div>'
+        +'<div ng-show= Ractive=="checkin" >' +
+        '<form class="col s12">'+
+        '<div class="row">'+
+        '<div class="input-field col s6">'+
+        '<input  id="first_name" type="text" class="validate">'+
+        '<label for="first_name">游客姓名</label>'+
+        '</div>'+
+        '<div class="input-field col s6">'+
+        '<input id="last_name" type="text" class="validate">'+
+        '<label for="last_name">游客id</label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s6">'+
+        '<input  id="first_name" type="text" class="validate">'+
+        '<label for="first_name">房费</label>'+
+        '</div>'+
+        '<div class="input-field col s6">'+
+        '<input id="last_name" type="text" class="validate">'+
+        '<label for="last_name">入住人数</label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s12">'+
+        '<input id="password" type="text" class="validate" ng-model="busId">'+
+        '<label for="password">订单号</label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s12">'+
+        '<input id="email" type="text" class="validate">'+
+        '<label for="email">备注</label>'+
+        '</div>'+
+        '</div>'
+        +'<button  class="waves-effect waves-light btn" ng-click="checkin()">入店登记</button>'
+        +'</form>'
+        +'</div>'
+        +'<div ng-show= Ractive=="checkout">' +
+        '<form class="col s12">'+
+        '<div class="row">'+
+        '<div class="input-field col s6">'+
+        '<input  id="first_name" type="text" class="validate">'+
+        '<label for="first_name">会员姓名</label>'+
+        '</div>'+
+        '<div class="input-field col s6">'+
+        '<input id="last_name" type="text" class="validate">'+
+        '<label for="last_name">会员卡号</label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s6">'+
+        '<input  id="first_name" type="text" class="validate">'+
+        '<label for="first_name">离店时间</label>'+
+        '</div>'+
+        '<div class="input-field col s6">'+
+        '<input id="last_name" type="text" class="validate">'+
+        '<label for="last_name">押金退还</label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s12">'+
+        '<input id="password" type="text" class="validate" ng-model="busId" >'+
+        '<label for="password">订单号</label>'+
+        '</div>'+
+        '</div>'+
+        '<div class="row">'+
+        '<div class="input-field col s12">'+
+        '<input id="email" type="text" class="validate">'+
+        '<label for="email">备注</label>'+
+        '</div>'+
+        '</div>'
+        +'<button  class="waves-effect waves-light btn" ng-click="checkout()">离店登记</button>'
+        +'</form>'
+        +'</div>'
+        +'</div>'
+        +'</div>'
+        +'<div class="col s4">'
+        +'<div class="caption-container-main">'
+        +'<div class="caption-text-container">当前预定</div>'
+        +'<div class="caption-bg "></div>'
+        +'</div>'
+        +'<div class="container"><ul class="collapsible badgecol" data-collapsible="accordion">'
+        +'<li ng-repeat= "bus in books">'
+        +'<div class="collapsible-header"><i class="material-icons text-lighten-2 materialize-red-text">info_outline</i>{{bus.userName}} ({{bus.userId}})</div>'
+        +'<div class="collapsible-body"><p>预定单号: {{bus.id}}</p><p>会员账号: {{bus.userName}}</p><p>会员卡号:{{bus.userId}}</p><p>开始时间: {{bus.startData}}</p><p>结束时间: {{bus.overData}}</p><p>每天价格: ¥{{bus.price}}</p><p>总计房费: ¥{{bus.cost}}</p></div>'
+        +'</li>'
+        +'</ul></div>'
+        +'<div class="caption-container-main">'
+        +'<div class="caption-text-container">当前入住</div>'
+        +'<div class="caption-bg "></div>'
+        +'</div>'
+        +'<div class="container"><ul class="collapsible badgecol" data-collapsible="accordion">'
+        +'<li ng-repeat= "bus in checkins">'
+        +'<div class="collapsible-header"><i class="material-icons text-lighten-2 materialize-red-text">done</i>{{bus.userName}} ({{bus.userId}})</div>'
+        +'<div class="collapsible-body"><p>预定单号: {{bus.id}}</p><p>会员账号: {{bus.userName}}</p><p>会员卡号:{{bus.userId}}</p><p>开始时间: {{bus.startData}}</p><p>结束时间: {{bus.overData}}</p><p>每天价格: ¥{{bus.price}}</p><p>总计房费: ¥{{bus.cost}}</p></div>'
+        +'</li>'
+        +'</ul></div>'
+        +'<div>'
+        +'</div>'
+        +'</div>'
+        +'</div>'
+
+    };
+    return obj;
+})
+app.filter("book",function(){
+    return function(input){
+        var out = [];
+        for(var i=0 ; i<input.length; i++){
+            if(input[i].book==1)
+                out.push(input[i]);
+        }
+
+        return out;
+    }
+});

@@ -2,6 +2,12 @@
 <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 <link href="/HostelWorld/static/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
 <main ng-app="hostelInfoApp" ng-controller="hostelInfoController">
+    <div id="info" style="display: none;">
+        <span id="hostelId">$!result.hostel.hostelId</span>
+        <span id="hostelName">$!result.hostel.name</span>
+        <span id="userId">$!result.user.cardId</span>
+        <span id="userName">$!result.user.username</span>
+    </div>
 <div class="topImage">
     <img src="/HostelWorld/static/images/hostelCover.jpg" style="width: 105%;height: 100%;">
 </div>
@@ -122,7 +128,7 @@
                             <span style="float: right">¥ <span class="materialize-red-text text-lighten-2">{{total()}}</span></span>
                         </div>
                         <div class="col s12">
-                          <button class="card-button waves-effect waves-light btn">预定</button>
+                          <button ng-click="addBook()" class="card-button waves-effect waves-light btn">预定</button>
                         </div>
                     </div>
                 </div>
